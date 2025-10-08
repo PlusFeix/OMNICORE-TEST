@@ -102,7 +102,7 @@
                             <div class="promo-card-overlay">
                                 <h3>Rendi Ogni Festa Indimenticabile</h3>
                                 <p>Prenota i migliori decoratori per matrimoni vicino a te</p>
-                                <button class="btn btn-primary">Esplora Ora</button>
+                                <button class="btn btn-primary" onclick="window.location.href='eventi-wizard.html'">Esplora Ora</button>
                             </div>
                         </div>
                         
@@ -112,7 +112,7 @@
                             <div class="promo-card-overlay">
                                 <h3>Prenota Hotel ai Migliori Prezzi</h3>
                                 <p>Confronta tariffe e trova l'alloggio perfetto</p>
-                                <button class="btn btn-primary">Cerca Hotel</button>
+                                <button class="btn btn-primary" onclick="window.location.href='hotel.html'">Cerca Hotel</button>
                             </div>
                         </div>
                         
@@ -299,7 +299,7 @@
                     
                     <!-- Events & Special -->
                     <!-- Wedding Planning -->
-                    <div class="category-card category-wedding" data-category="matrimoni">
+                    <div class="category-card category-wedding" data-category="matrimoni" onclick="window.location.href='eventi-wizard.html'">
                         <span class="wedding-badge">WEDDING</span>
                         <div class="category-icon">
                             <i class="fas fa-ring"></i>
@@ -308,7 +308,7 @@
                     </div>
                     
                     <!-- Eventi -->
-                    <div class="category-card" data-category="eventi">
+                    <div class="category-card" data-category="eventi" onclick="window.location.href='eventi-wizard.html'">
                         <div class="category-icon">
                             <i class="fas fa-calendar-alt"></i>
                         </div>
@@ -492,7 +492,7 @@
                 <div class="content-box">
                     <div class="content-box-header">
                         <h3>Requisiti per Matrimoni</h3>
-                        <a href="#" class="explore-link">Esplora Altri <i class="fas fa-chevron-right"></i></a>
+                        <a href="eventi-wizard.html" class="explore-link">Esplora Altri <i class="fas fa-chevron-right"></i></a>
                     </div>
                     <div class="content-box-items">
                         <div class="content-item">
@@ -890,7 +890,12 @@
                 // Se è hotel, vai alla pagina dedicata
                 else if (category === 'hotel') {
                     window.location.href = 'hotel.html';
-                } 
+                }
+                // Se è matrimoni o eventi, vai al wizard (già gestito con onclick inline)
+                else if (category === 'matrimoni' || category === 'eventi') {
+                    // Handled by inline onclick
+                    return;
+                }
                 else {
                     window.location.href = `aziende.html?category=${category}`;
                 }
