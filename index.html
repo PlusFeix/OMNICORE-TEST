@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omnicore Service - La Vetrina Digitale delle Eccellenze Sarde</title>
+    <meta name="description" content="Scopri le migliori aziende della Sardegna. Piattaforma professionale per connettere imprese e clienti con mappe interattive e pagamenti sicuri.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-building"></i> Omnicore Service</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="aziende.html">Aziende</a></li>
+                <li><a href="#mappa">Mappa</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Accedi</button>
+                <button class="btn btn-primary" id="registerBtn">Registrati</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Video Background -->
+        <div class="hero-video-background">
+            <video id="heroVideo" autoplay muted loop playsinline poster="media/videos/hero-video-poster.jpg">
+                <source src="media/videos/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    <span>La Piattaforma #1 per le Aziende Sarde</span>
+                </div>
+                <h1>
+                    Connetti la Tua <span>Eccellenza</span>
+                    con Migliaia di Clienti
+                </h1>
+                <p>La vetrina digitale più completa della Sardegna. Mappe interattive, pagamenti integrati e visibilità garantita per far crescere il tuo business.</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('aziende').scrollIntoView({behavior: 'smooth'})">
+                        <span>Esplora le Aziende</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline" onclick="document.getElementById('registerBtn').click()">
+                        <span>Registra la Tua Azienda</span>
+                        <i class="fas fa-building"></i>
+                    </button>
+                </div>
+                <div class="trust-badges">
+                    <span class="trust-badge"><i class="fas fa-shield-alt"></i> Pagamenti Sicuri</span>
+                    <span class="trust-badge"><i class="fas fa-lock"></i> Privacy Garantita</span>
+                    <span class="trust-badge"><i class="fas fa-check-circle"></i> Certificato SSL</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scorri per scoprire</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="1500">0</div>
+                    <p class="stat-label">Aziende Partner</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <p class="stat-label">Utenti Attivi</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="98">0</div>
+                    <p class="stat-label">% Soddisfazione</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="145">0</div>
+                    <p class="stat-label">% Crescita Annua</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluzioni Section -->
+    <section class="soluzioni" id="servizi">
+        <div class="container">
+            <!-- Micro Header Animato -->
+            <div class="section-intro" data-aos="fade-down" data-aos-duration="800">
+                <span class="intro-sparkle">✨</span>
+                <p class="intro-text">Le Soluzioni Omnicore per chi vuole eccellere nel digitale</p>
+            </div>
+            
+            <!-- Barra Ricerca AI -->
+            <div class="ai-search-container" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="ai-search-wrapper">
+                    <div class="ai-badge">
+                        <i class="fas fa-brain"></i>
+                        <span>AI</span>
+                    </div>
+                    <input 
+                        type="text" 
+                        class="ai-search-input" 
+                        id="aiSearchInput"
+                        placeholder="Cerca con l'intelligenza artificiale... es: 'Ristorante ad Alghero', 'Artigiano ceramica'"
+                    >
+                    <button class="ai-search-btn" id="aiSearchBtn">
+                        <i class="fas fa-search"></i>
+                        <span>Cerca</span>
+                    </button>
+                </div>
+                <div class="ai-suggestions" id="aiSuggestions">
+                    <span class="suggestion-label">Suggerimenti:</span>
+                    <button class="suggestion-tag" data-query="Ristoranti Cagliari">
+                        <i class="fas fa-utensils"></i> Ristoranti Cagliari
+                    </button>
+                    <button class="suggestion-tag" data-query="Hotel Costa Smeralda">
+                        <i class="fas fa-hotel"></i> Hotel Costa Smeralda
+                    </button>
+                    <button class="suggestion-tag" data-query="Artigiani locali">
+                        <i class="fas fa-hammer"></i> Artigiani locali
+                    </button>
+                    <button class="suggestion-tag" data-query="Centri benessere">
+                        <i class="fas fa-spa"></i> Centri benessere
+                    </button>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <span class="section-badge" data-aos="fade-up" data-aos-delay="100">Soluzioni Complete</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">Soluzioni Digitali per Ogni Impresa Sarda</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="300">Dalla ristorazione all'artigianato — Omnicore ti aiuta a digitalizzare, gestire e far crescere la tua attività in modo intelligente.</p>
+            </div>
+            
+            <!-- Griglia Masonry Interattiva -->
+            <div class="solutions-masonry">
+                <!-- Card Ristoranti -->
+                <div class="solution-card large" data-aos="fade-up" data-aos-delay="100">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" 
+                             alt="Ristoranti" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Ristoranti & Bar</h3>
+                                <p>Menu digitale, prenotazioni online e delivery integrato</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Hotel -->
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" 
+                             alt="Hotel" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Hotel & B&B</h3>
+                                <p>Sistema prenotazioni e pagamenti sicuri</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Artigianato -->
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600" 
+                             alt="Artigianato" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Artigiani Sardi</h3>
+                                <p>Vetrina prodotti e e-commerce integrato</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Negozi -->
+                <div class="solution-card tall" data-aos="fade-up" data-aos-delay="200">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600" 
+                             alt="Negozi" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Negozi & Commercio</h3>
+                                <p>Vendi online e in negozio con un solo sistema</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Professionisti -->
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" 
+                             alt="Professionisti" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Professionisti</h3>
+                                <p>Agenda online e gestione clienti avanzata</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Benessere -->
+                <div class="solution-card wide" data-aos="fade-up" data-aos-delay="400">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" 
+                             alt="Centri Benessere" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Centri Benessere</h3>
+                                <p>Prenotazioni trattamenti 24/7 e gestione abbonamenti</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Testimonianze</span>
+                <h2 class="section-title">Cosa Dicono i Nostri Partner</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="Maria Piras">
+                        <div>
+                            <h4>Francesco Stellato</h4>
+                            <p>Proprietario, Ristorante Mabrouk, Alghero</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Una piattaforma professionale e intuitiva. Il sistema di pagamenti integrato ci ha fatto risparmiare tempo e aumentato le vendite."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Giovanni Serra">
+                        <div>
+                            <h4>Giovanni Serra</h4>
+                            <p>CEO, Artigianato Sardo Premium</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Il supporto clienti è eccezionale. Sempre disponibili e professionali. La mappa interattiva ci porta nuovi clienti ogni giorno."</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=45" alt="Laura Melis">
+                        <div>
+                            <h4>Laura Melis</h4>
+                            <p>Manager, Hotel Costa Smeralda</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aziende in Evidenza Section -->
+    <section id="aziende" class="aziende-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-aos="fade-up">⭐ Top del Mese</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Aziende in Evidenza</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Le migliori eccellenze sarde selezionate per te questo mese</p>
+            </div>
+            
+            <div class="featured-aziende-grid" id="featuredAziendeGrid">
+                <!-- Le 6 aziende TOP verranno caricate dinamicamente -->
+            </div>
+            
+            <!-- CTA per vedere tutte le aziende -->
+            <div class="view-all-cta" data-aos="fade-up" data-aos-delay="300">
+                <p class="cta-text">Vuoi scoprire tutte le aziende partner?</p>
+                <a href="aziende.html" class="btn btn-primary btn-large">
+                    <span>Esplora Tutte le Aziende</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <p class="cta-subtext">Oltre 1.500 aziende verificate ti aspettano</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Attrazioni Sarde -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Scopri la Sardegna</span>
+                <h2 class="section-title">Le Perle della Sardegna</h2>
+                <p class="section-subtitle">Esplora le meraviglie archeologiche e naturali della Sardegna, patrimonio di storia millenaria e bellezze uniche</p>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <div class="gallery-carousel-container">
+                <button class="carousel-nav carousel-nav-left" id="carouselPrev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="gallery-carousel" id="galleryCarousel">
+                    <div class="gallery-carousel-track" id="carouselTrack">
+                        <!-- Card 1: Hotel Punta Negra -->
+                        <div class="gallery-carousel-item" 
+                             data-title="Hotel Punta Negra"
+                             data-location="Alghero (SS)"
+                             data-description="L'Hotel Punta Negra è un elegante resort 4 stelle situato sulla costa di Alghero, affacciato sul mare cristallino della Riviera del Corallo. Con le sue camere moderne, piscina panoramica, spa e ristorante gourmet, offre un'esperienza di lusso immersa nella natura sarda. Perfetto per vacanze romantiche e relax."
+                             data-info="📍 Località Punta Negra, Fertilia - Alghero<br>⭐ 4 stelle<br>🏊 Piscina panoramica e SPA<br>🍽️ Ristorante vista mare<br>📞 +39 079 123456<br>🌐 www.hotelpuntanegra.com">
+                            <div class="gallery-carousel-image">
+                                <img src="media/images/gallery/hotel-punta-negra.jpg" alt="Hotel Punta Negra" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'">
+                            </div>
+                            <div class="gallery-carousel-content">
+                                <div class="carousel-badge">
+                                    <i class="fas fa-hotel"></i>
+                                    <span>Hotel di Lusso</span>
+                                </div>
+                                <h3>Hotel Punta Negra</h3>
+                                <p class="carousel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Alghero, Riviera del Corallo
+                                </p>
+                                <p class="carousel-description">Resort 4 stelle con vista mozzafiato sul mare e servizi di alta qualità</p>
+                                <button class="gallery-info-btn">
+                                    <i class="fas fa-info-circle"></i> Scopri di più
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Nuraghe di Santu Antine -->
+                        <div class="gallery-carousel-item" 
+                             data-title="Nuraghe di Santu Antine"
+                             data-location="Torralba (SS)"
+                             data-description="Uno dei nuraghi meglio conservati della Sardegna, il Santu Antine è alto circa 17 metri ed è composto da tre torri. Costruito tra il 1600 e il 1200 a.C., rappresenta uno dei più maestosi esempi della civiltà nuragica. Il complesso include anche un villaggio circostante con capanne e mura difensive."
+                             data-info="📍 Località Santu Antine, Torralba<br>⏰ Orari: 9:00-19:00 (estate)<br>💶 Biglietto: €5,00<br>🌐 www.nuraghesintuantine.it">
+                            <div class="gallery-carousel-image">
+                                <img src="media/images/gallery/nuraghe-santu-antine.jpg" alt="Nuraghe di Santu Antine" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'">
+                            </div>
+                            <div class="gallery-carousel-content">
+                                <div class="carousel-badge">
+                                    <i class="fas fa-landmark"></i>
+                                    <span>Sito Archeologico</span>
+                                </div>
+                                <h3>Nuraghe di Santu Antine</h3>
+                                <p class="carousel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Torralba (SS)
+                                </p>
+                                <p class="carousel-description">Maestoso esempio della civiltà nuragica, alto 17 metri</p>
+                                <button class="gallery-info-btn">
+                                    <i class="fas fa-info-circle"></i> Scopri di più
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Su Nuraxi di Barumini -->
+                        <div class="gallery-carousel-item" 
+                             data-title="Su Nuraxi di Barumini"
+                             data-location="Barumini (SU)"
+                             data-description="Patrimonio UNESCO dal 1997, Su Nuraxi è il più importante complesso nuragico della Sardegna. Risalente al 1500 a.C., include una torre centrale circondata da quattro torri angolari e un villaggio di oltre 50 capanne."
+                             data-info="📍 Via Su Nuraxi, Barumini<br>⏰ Orari: 9:00-20:00 (estate)<br>💶 Biglietto: €10,00<br>🏆 Patrimonio UNESCO<br>🌐 www.fondazionebarumini.it">
+                            <div class="gallery-carousel-image">
+                                <img src="media/images/gallery/su-nuraxi-barumini.jpg" alt="Su Nuraxi di Barumini" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?w=800'">
+                            </div>
+                            <div class="gallery-carousel-content">
+                                <div class="carousel-badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>Patrimonio UNESCO</span>
+                                </div>
+                                <h3>Su Nuraxi di Barumini</h3>
+                                <p class="carousel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Barumini (SU)
+                                </p>
+                                <p class="carousel-description">Il complesso nuragico più importante dell'isola</p>
+                                <button class="gallery-info-btn">
+                                    <i class="fas fa-info-circle"></i> Scopri di più
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: Cala Goloritze -->
+                        <div class="gallery-carousel-item" 
+                             data-title="Cala Goloritze"
+                             data-location="Baunei (NU)"
+                             data-description="Cala Goloritze è una delle spiagge più belle e iconiche della Sardegna. Con le sue acque turchesi cristalline, la sabbia bianchissima e il celebre pinnacolo di roccia calcarea alto 143 metri, è un vero paradiso."
+                             data-info="📍 Golfo di Orosei, Baunei<br>🥾 Trekking: 1h 30min circa<br>⛵ Accessibile via mare<br>🏆 Monumento Naturale">
+                            <div class="gallery-carousel-image">
+                                <img src="media/images/gallery/cala-goloritze.jpg" alt="Cala Goloritze" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800'">
+                            </div>
+                            <div class="gallery-carousel-content">
+                                <div class="carousel-badge">
+                                    <i class="fas fa-umbrella-beach"></i>
+                                    <span>Spiaggia Paradisiaca</span>
+                                </div>
+                                <h3>Cala Goloritze</h3>
+                                <p class="carousel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Baunei, Golfo di Orosei
+                                </p>
+                                <p class="carousel-description">Acque cristalline e il famoso pinnacolo roccioso</p>
+                                <button class="gallery-info-btn">
+                                    <i class="fas fa-info-circle"></i> Scopri di più
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Grotta di Nettuno -->
+                        <div class="gallery-carousel-item" 
+                             data-title="Grotta di Nettuno"
+                             data-location="Alghero (SS)"
+                             data-description="La Grotta di Nettuno è una delle grotte marine più spettacolari del Mediterraneo. Con stalattiti e stalagmiti millenarie, un lago salato interno e formazioni calcaree mozzafiato, offre uno spettacolo naturale unico."
+                             data-info="📍 Capo Caccia, Alghero<br>⏰ Orari: 9:00-19:00 (estate)<br>💶 Biglietto: €13,00<br>⛵ Accessibile via mare o via terra">
+                            <div class="gallery-carousel-image">
+                                <img src="media/images/gallery/grotta-nettuno.jpg" alt="Grotta di Nettuno" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800'">
+                            </div>
+                            <div class="gallery-carousel-content">
+                                <div class="carousel-badge">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Grotta Marina</span>
+                                </div>
+                                <h3>Grotta di Nettuno</h3>
+                                <p class="carousel-location">
+                                    <i class="fas fa-map-marker-alt"></i> Capo Caccia, Alghero
+                                </p>
+                                <p class="carousel-description">Stalattiti e stalagmiti millenarie mozzafiato</p>
+                                <button class="gallery-info-btn">
+                                    <i class="fas fa-info-circle"></i> Scopri di più
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav carousel-nav-right" id="carouselNext">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+        </div>
+    </section>
+
+    <!-- Mappa Section -->
+    <section id="mappa" class="mappa-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Esplora</span>
+                <h2 class="section-title">Trova Aziende Vicino a Te</h2>
+                <p class="section-subtitle">Utilizza la nostra mappa interattiva per scoprire le migliori aziende della Sardegna</p>
+            </div>
+            <div class="map-controls">
+                <button class="map-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Tutte
+                </button>
+                <button class="map-btn" data-filter="ristorazione">
+                    <i class="fas fa-utensils"></i> Ristorazione
+                </button>
+                <button class="map-btn" data-filter="turismo">
+                    <i class="fas fa-hotel"></i> Turismo
+                </button>
+                <button class="map-btn" data-filter="artigianato">
+                    <i class="fas fa-hammer"></i> Artigianato
+                </button>
+                <button class="map-btn" data-filter="servizi">
+                    <i class="fas fa-briefcase"></i> Servizi
+                </button>
+            </div>
+            <div id="map"></div>
+        </div>
+    </section>
+
+    <!-- About CEO Section -->
+    <section class="about-ceo">
+        <div class="container">
+            <div class="ceo-container">
+                <div class="ceo-image-wrapper" data-aos="fade-right">
+                    <div class="ceo-image">
+                        <img src="media/images/team/ceo.png" alt="CEO Omnicore Service" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800'">
+                    </div>
+                    <div class="ceo-badge">
+                        <span>CEO & Founder</span>
+                    </div>
+                </div>
+                <div class="ceo-content" data-aos="fade-left">
+                    <h3>Chi Sono</h3>
+                    <h2>La Visione Dietro Omnicore Service</h2>
+                    <p>Sono nato e cresciuto in Sardegna, e ho sempre avuto la passione per l'innovazione tecnologica e l'imprenditoria. Nel 2019, ho fondato Omnicore Service con una missione chiara: digitalizzare le eccellenze sarde e renderle accessibili a migliaia di clienti.</p>
+                    <p>La mia esperienza nel settore IT e il profondo amore per questa terra mi hanno spinto a creare una piattaforma che non fosse solo tecnologica, ma che valorizzasse la cultura, la tradizione e l'artigianato locale. Oggi, Omnicore Service è la realtà leader nel digitale sardo, con oltre 1.500 aziende partner e 50.000 utenti attivi.</p>
+                    <p>Il mio obiettivo è continuare a innovare, supportare le imprese locali e contribuire alla crescita economica della Sardegna attraverso la tecnologia.</p>
+                    
+                    <div class="ceo-stats">
+                        <div class="ceo-stat">
+                            <h4>2019</h4>
+                            <p>Anno di Fondazione</p>
+                        </div>
+                        <div class="ceo-stat">
+                            <h4>1.500+</h4>
+                            <p>Aziende Supportate</p>
+                        </div>
+                        <div class="ceo-stat">
+                            <h4>15+</h4>
+                            <p>Anni di Esperienza</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ceo-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto a Far Crescere la Tua Azienda?</h2>
+                <p>Unisciti a oltre 1.500 aziende sarde che hanno scelto Omnicore Service per aumentare la loro visibilità e le vendite</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('registerBtn').click()">
+                        <span>Inizia Gratis</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-outline" onclick="window.location.href='#contatti'">
+                        <span>Contatta il Team</span>
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+                <div class="cta-features">
+                    <span><i class="fas fa-check"></i> 30 giorni di prova gratuita</span>
+                    <span><i class="fas fa-check"></i> Nessuna carta richiesta</span>
+                    <span><i class="fas fa-check"></i> Supporto dedicato</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contatti">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Omnicore Service</h3>
+                    <p>La piattaforma leader per le aziende sarde. Connettiti con migliaia di clienti e fai crescere il tuo business.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Link Utili</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#aziende">Aziende</a></li>
+                        <li><a href="#mappa">Mappa</a></li>
+                        <li><a href="#servizi">Servizi</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Termini e Condizioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@omnicoreservice.it</li>
+                        <li><i class="fas fa-phone"></i> +39 070 123456</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Via Roma 123, Cagliari</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Seguici</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Omnicore Service. Tutti i diritti riservati. Made with ❤️ in Sardegna</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bentornato!</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="mario.rossi@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Accedi</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                </button>
+                <p class="form-footer">Non hai un account? <a href="#" id="switchToRegister">Registrati ora</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Registrazione -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Crea il Tuo Account</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" placeholder="Mario Rossi" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="mario.rossi@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Minimo 6 caratteri" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Conferma Password</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Ripeti la password" required>
+                </div>
+                <div class="form-group">
+                    <label for="userType">Tipo di Utente</label>
+                    <select id="userType" required>
+                        <option value="">Seleziona...</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="azienda">Proprietario Azienda</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Registrati</span>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+                <p class="form-footer">Hai già un account? <a href="#" id="switchToLogin">Accedi</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Attrazione Sardegna -->
+    <div id="attractionModal" class="modal">
+        <div class="modal-content attraction-modal-content">
+            <span class="close">&times;</span>
+            <div class="attraction-modal-body">
+                <div class="attraction-modal-image">
+                    <img id="attractionModalImage" src="" alt="">
+                </div>
+                <div class="attraction-modal-info">
+                    <div class="attraction-badge" id="attractionModalBadge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="attractionModalLocation"></span>
+                    </div>
+                    <h2 id="attractionModalTitle"></h2>
+                    <p id="attractionModalDescription" class="attraction-description"></p>
+                    <div class="attraction-details" id="attractionModalInfo"></div>
+                    <div class="attraction-modal-actions">
+                        <button class="btn btn-primary" onclick="window.open('https://www.google.com/maps/search/' + encodeURIComponent(document.getElementById('attractionModalTitle').textContent + ' Sardegna'), '_blank')">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Vedi su Maps</span>
+                        </button>
+                        <button class="btn btn-outline" onclick="document.getElementById('attractionModal').style.display='none'">
+                            <span>Chiudi</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Inizializza AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

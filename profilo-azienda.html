@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profilo Azienda - Omnicore Service</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profilo-azienda.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-building"></i>
+                    <span>Omnicore Service</span>
+                </a>
+                <nav class="nav">
+                    <a href="index.html#home">Home</a>
+                    <a href="index.html#aziende">Aziende</a>
+                    <a href="index.html#mappa">Mappa</a>
+                    <a href="index.html#servizi">Servizi</a>
+                    <a href="index.html#contatti">Contatti</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn-outline" id="backBtn">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Torna Indietro</span>
+                    </button>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Business Profile Hero -->
+    <section class="business-hero" id="businessHero">
+        <div class="business-hero-background">
+            <img id="heroCover" src="" alt="Cover">
+            <div class="business-hero-overlay"></div>
+        </div>
+        <div class="business-header">
+            <div class="container">
+                <div class="business-header-content">
+                    <div class="business-logo">
+                        <img id="businessLogo" src="" alt="Logo">
+                    </div>
+                    <div class="business-info-wrapper">
+                        <div class="business-info">
+                            <div class="business-badge" id="businessCategory">
+                                <i class="fas fa-tag"></i>
+                                <span>Categoria</span>
+                            </div>
+                            <h1 id="businessName">Nome Azienda</h1>
+                            <div class="business-meta">
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <span id="businessRating">0.0</span>
+                                    <span class="reviews" id="reviewCount">(0 recensioni)</span>
+                                </div>
+                                <div class="location">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span id="businessLocation">Località</span>
+                                </div>
+                            </div>
+                            <div class="status" id="businessStatus">
+                                <i class="fas fa-clock"></i>
+                                <span>Stato</span>
+                            </div>
+                        </div>
+                        <div class="business-actions">
+                            <button class="btn btn-primary" id="contactBtn">
+                                <i class="fas fa-phone"></i>
+                                <span>Contatta</span>
+                            </button>
+                            <button class="btn btn-outline" id="bookBtn">
+                                <i class="fas fa-calendar-check"></i>
+                                <span>Prenota</span>
+                            </button>
+                            <button class="btn-icon" id="shareBtn" title="Condividi">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <button class="btn-icon" id="favoriteBtn" title="Aggiungi ai preferiti">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="business-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Left Column -->
+                <div class="main-column">
+                    <!-- Tabs Navigation -->
+                    <div class="tabs-nav">
+                        <button class="tab-btn active" data-tab="overview">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Panoramica</span>
+                        </button>
+                        <button class="tab-btn" data-tab="gallery">
+                            <i class="fas fa-images"></i>
+                            <span>Galleria</span>
+                        </button>
+                        <button class="tab-btn" data-tab="services">
+                            <i class="fas fa-concierge-bell"></i>
+                            <span>Servizi</span>
+                        </button>
+                        <button class="tab-btn" data-tab="reviews">
+                            <i class="fas fa-star"></i>
+                            <span>Recensioni</span>
+                        </button>
+                    </div>
+
+                    <!-- Overview Tab -->
+                    <div class="tab-content active" id="overview">
+                        <div class="content-card">
+                            <h2><i class="fas fa-info-circle"></i> Descrizione</h2>
+                            <p id="businessDescription">Descrizione dell'azienda...</p>
+                        </div>
+
+                        <div class="content-card">
+                            <h2><i class="fas fa-list-check"></i> Informazioni</h2>
+                            <div class="info-list" id="businessFeatures">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
+                        <div class="content-card">
+                            <h2><i class="fas fa-clock"></i> Orari di Apertura</h2>
+                            <div class="schedule-list" id="businessSchedule">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Tab -->
+                    <div class="tab-content" id="gallery">
+                        <div class="content-card">
+                            <h2><i class="fas fa-images"></i> Galleria Media</h2>
+                            <div class="media-tabs">
+                                <button class="media-tab-btn active" data-media="photos">
+                                    <i class="fas fa-camera"></i> Foto (6)
+                                </button>
+                                <button class="media-tab-btn" data-media="videos">
+                                    <i class="fas fa-video"></i> Video (1)
+                                </button>
+                            </div>
+                            <div class="media-grid" id="mediaGrid">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Services Tab -->
+                    <div class="tab-content" id="services">
+                        <div class="content-card">
+                            <h2><i class="fas fa-concierge-bell"></i> I Nostri Servizi</h2>
+                            <div class="services-grid" id="servicesGrid">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Tab -->
+                    <div class="tab-content" id="reviews">
+                        <div class="content-card">
+                            <div class="reviews-header">
+                                <h2><i class="fas fa-star"></i> Recensioni Clienti</h2>
+                                <button class="btn btn-primary" id="writeReviewBtn">
+                                    <i class="fas fa-pen"></i>
+                                    <span>Scrivi Recensione</span>
+                                </button>
+                            </div>
+                            <div class="reviews-summary" id="reviewsSummary">
+                                <!-- Populated by JS -->
+                            </div>
+                            <div class="reviews-list" id="reviewsList">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <aside class="sidebar">
+                    <!-- Contact Card -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-phone"></i> Contatti</h3>
+                        <div class="contact-list">
+                            <a href="#" class="contact-item" id="phoneContact">
+                                <i class="fas fa-phone"></i>
+                                <span>Chiama Ora</span>
+                            </a>
+                            <a href="#" class="contact-item" id="emailContact">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                            <a href="#" class="contact-item" id="websiteContact" target="_blank">
+                                <i class="fas fa-globe"></i>
+                                <span>Sito Web</span>
+                            </a>
+                            <a href="#" class="contact-item" id="whatsappContact" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Location Card -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-map-marker-alt"></i> Dove Siamo</h3>
+                        <div id="businessMap" class="business-map"></div>
+                        <a href="#" class="btn btn-outline btn-full" id="directionsBtn" target="_blank">
+                            <i class="fas fa-directions"></i>
+                            <span>Indicazioni Stradali</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Card -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-share-nodes"></i> Seguici</h3>
+                        <div class="social-links" id="socialLinks">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Share Card -->
+                    <div class="sidebar-card">
+                        <h3><i class="fas fa-share-alt"></i> Condividi</h3>
+                        <div class="share-buttons">
+                            <button class="share-btn" data-platform="facebook" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="share-btn" data-platform="twitter" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button class="share-btn" data-platform="linkedin" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </button>
+                            <button class="share-btn" data-platform="whatsapp" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button class="share-btn" data-platform="copy" title="Copia Link">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('contactModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Contatta Azienda</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" required placeholder="Il tuo nome">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="tua@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input type="tel" required placeholder="+39 123 456 7890">
+                </div>
+                <div class="form-group">
+                    <label>Messaggio</label>
+                    <textarea required placeholder="Come possiamo aiutarti?" rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Invia Messaggio</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('bookingModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Prenota Servizio</h2>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label>Servizio</label>
+                    <select required id="serviceSelect">
+                        <option value="">Seleziona un servizio</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Data</label>
+                    <input type="date" required>
+                </div>
+                <div class="form-group">
+                    <label>Ora</label>
+                    <input type="time" required>
+                </div>
+                <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input type="text" required placeholder="Il tuo nome">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" required placeholder="tua@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Telefono</label>
+                    <input type="tel" required placeholder="+39 123 456 7890">
+                </div>
+                <div class="form-group">
+                    <label>Note (opzionale)</label>
+                    <textarea placeholder="Note aggiuntive..." rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-check"></i>
+                    <span>Conferma Prenotazione</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div class="modal" id="reviewModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('reviewModal')">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Scrivi una Recensione</h2>
+            <form class="review-form" id="reviewForm">
+                <div class="form-group">
+                    <label>Valutazione</label>
+                    <div class="star-rating" id="starRating">
+                        <i class="far fa-star" data-rating="1"></i>
+                        <i class="far fa-star" data-rating="2"></i>
+                        <i class="far fa-star" data-rating="3"></i>
+                        <i class="far fa-star" data-rating="4"></i>
+                        <i class="far fa-star" data-rating="5"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" required placeholder="Il tuo nome">
+                </div>
+                <div class="form-group">
+                    <label>Titolo Recensione</label>
+                    <input type="text" required placeholder="Ottima esperienza!">
+                </div>
+                <div class="form-group">
+                    <label>La Tua Recensione</label>
+                    <textarea required placeholder="Racconta la tua esperienza..." rows="5"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Pubblica Recensione</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/profilo-azienda.js"></script>
+</body>
+</html>

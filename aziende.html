@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutte le Aziende Partner - Omnicore Service</title>
+    <meta name="description" content="Esplora tutte le aziende partner Omnicore Service. Oltre 1.500 eccellenze sarde verificate.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-building"></i> Omnicore Service</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aziende.html" class="active">Aziende</a></li>
+                <li><a href="index.html#mappa">Mappa</a></li>
+                <li><a href="index.html#servizi">Servizi</a></li>
+                <li><a href="index.html#contatti">Contatti</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Accedi</button>
+                <button class="btn btn-primary" id="registerBtn">Registrati</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Aziende -->
+    <section class="aziende-hero">
+        <div class="container">
+            <div class="aziende-hero-content">
+                <span class="hero-badge" data-aos="fade-down">
+                    <i class="fas fa-building"></i>
+                    <span>1.500+ Aziende Partner</span>
+                </span>
+                <h1 data-aos="fade-up" data-aos-delay="100">
+                    Scopri Tutte le <span>Eccellenze Sarde</span>
+                </h1>
+                <p data-aos="fade-up" data-aos-delay="200">
+                    Esplora il catalogo completo delle migliori aziende della Sardegna. Trova quella perfetta per te.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtri e Ricerca -->
+    <section class="aziende-filters-section" id="filtersSection">
+        <div class="container">
+            <div class="filters-header">
+                <h3 class="filters-title">
+                    <i class="fas fa-filter"></i>
+                    <span>Filtra Aziende</span>
+                </h3>
+                <button class="toggle-filters-btn" id="toggleFiltersBtn" title="Compatta/Espandi filtri">
+                    <i class="fas fa-chevron-up"></i>
+                </button>
+            </div>
+            
+            <div class="filters-wrapper" id="filtersWrapper" data-aos="fade-up">
+                <div class="search-filters">
+                    <input type="text" placeholder="🔍 Cerca azienda per nome o città..." id="searchInput">
+                    <select id="categoryFilter">
+                        <option value="">Tutte le categorie</option>
+                        <option value="ristorazione">Ristorazione</option>
+                        <option value="turismo">Turismo</option>
+                        <option value="artigianato">Artigianato</option>
+                        <option value="servizi">Servizi</option>
+                        <option value="commercio">Commercio</option>
+                    </select>
+                    <select id="locationFilter">
+                        <option value="">Tutta la Sardegna</option>
+                        <option value="cagliari">Cagliari</option>
+                        <option value="sassari">Sassari</option>
+                        <option value="olbia">Olbia</option>
+                        <option value="nuoro">Nuoro</option>
+                        <option value="oristano">Oristano</option>
+                    </select>
+                    <button class="btn btn-primary" id="applyFiltersBtn">
+                        <i class="fas fa-filter"></i>
+                        <span>Filtra</span>
+                    </button>
+                </div>
+                
+                <div class="filters-meta">
+                    <p class="results-count" id="resultsCount">Mostrando <strong>tutte</strong> le aziende</p>
+                    <button class="btn btn-outline btn-small" id="resetFiltersBtn">
+                        <i class="fas fa-redo"></i>
+                        Reset filtri
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Griglia Aziende -->
+    <section class="all-aziende-section">
+        <div class="container">
+            <div class="aziende-grid" id="aziendeGrid">
+                <!-- Le aziende verranno caricate dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contatti">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Omnicore Service</h3>
+                    <p>La piattaforma leader per le aziende sarde. Connettiti con migliaia di clienti e fai crescere il tuo business.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Link Utili</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="aziende.html">Aziende</a></li>
+                        <li><a href="index.html#mappa">Mappa</a></li>
+                        <li><a href="index.html#servizi">Servizi</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Termini e Condizioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@omnicoreservice.it</li>
+                        <li><i class="fas fa-phone"></i> +39 070 123456</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Via Roma 123, Cagliari</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Seguici</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Omnicore Service. Tutti i diritti riservati. Made with ❤️ in Sardegna</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bentornato!</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="mario.rossi@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Accedi</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                </button>
+                <p class="form-footer">Non hai un account? <a href="#" id="switchToRegister">Registrati ora</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Registrazione -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Crea il Tuo Account</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" placeholder="Mario Rossi" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="mario.rossi@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Minimo 6 caratteri" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Conferma Password</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Ripeti la password" required>
+                </div>
+                <div class="form-group">
+                    <label for="userType">Tipo di Utente</label>
+                    <select id="userType" required>
+                        <option value="">Seleziona...</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="azienda">Proprietario Azienda</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Registrati</span>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+                <p class="form-footer">Hai già un account? <a href="#" id="switchToLogin">Accedi</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Inizializza AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Toggle Filters Button
+        const toggleFiltersBtn = document.getElementById('toggleFiltersBtn');
+        const filtersSection = document.querySelector('.aziende-filters-section');
+        
+        if (toggleFiltersBtn && filtersSection) {
+            toggleFiltersBtn.addEventListener('click', function() {
+                filtersSection.classList.toggle('collapsed');
+                
+                // Salva stato nel localStorage
+                const isCollapsed = filtersSection.classList.contains('collapsed');
+                localStorage.setItem('filtersCollapsed', isCollapsed);
+                
+                // Feedback visivo
+                if (isCollapsed) {
+                    showNotification('Filtri nascosti', 'success');
+                } else {
+                    showNotification('Filtri visibili', 'success');
+                }
+            });
+            
+            // Ripristina stato salvato
+            const savedState = localStorage.getItem('filtersCollapsed');
+            if (savedState === 'true') {
+                filtersSection.classList.add('collapsed');
+            }
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            const filterSection = document.querySelector('.aziende-filters-section');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Aggiungi ombra ai filtri quando si scrolla
+            if (filterSection && window.scrollY > 300) {
+                filterSection.classList.add('scrolled');
+            } else if (filterSection) {
+                filterSection.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
