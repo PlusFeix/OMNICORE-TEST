@@ -15,7 +15,7 @@
         .wizard-container {
             display: flex;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             padding-top: 80px;
         }
         
@@ -60,7 +60,7 @@
             top: 20px;
             left: 0;
             height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(90deg, #ff6b35 0%, #f7931e 100%);
             transition: width 0.3s ease;
             z-index: 1;
         }
@@ -88,8 +88,8 @@
         }
         
         .progress-step.active .progress-step-circle {
-            border-color: #667eea;
-            background: #667eea;
+            border-color: #ff6b35;
+            background: #ff6b35;
             color: white;
         }
         
@@ -157,13 +157,23 @@
         }
         
         .event-type-card.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
         }
         
         .event-type-icon {
             font-size: 48px;
             margin-bottom: 15px;
+            color: #ff6b35;
+            transition: all 0.3s ease;
+        }
+        
+        .event-type-card:hover .event-type-icon {
+            transform: scale(1.1);
+        }
+        
+        .event-type-card.selected .event-type-icon {
+            color: #f7931e;
         }
         
         .event-type-name {
@@ -199,7 +209,7 @@
         .form-input:focus,
         .form-select:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #ff6b35;
         }
         
         .form-grid {
@@ -236,8 +246,8 @@
         }
         
         .radio-option input[type="radio"]:checked + label {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
         }
         
         /* Checkbox Services */
@@ -271,12 +281,12 @@
         .service-checkbox label i {
             margin-right: 10px;
             font-size: 20px;
-            color: #667eea;
+            color: #ff6b35;
         }
         
         .service-checkbox input[type="checkbox"]:checked + label {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%);
         }
         
         /* Provider Selection */
@@ -294,8 +304,8 @@
         }
         
         .provider-card.selected {
-            border-color: #667eea;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(247, 147, 30, 0.05) 100%);
         }
         
         .provider-header {
@@ -324,7 +334,7 @@
         .provider-price {
             font-size: 24px;
             font-weight: 700;
-            color: #667eea;
+            color: #ff6b35;
         }
         
         .provider-details {
@@ -362,14 +372,14 @@
         }
         
         .btn-wizard-next {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
             flex: 1;
         }
         
         .btn-wizard-next:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
         }
         
         .btn-wizard-next:disabled {
@@ -405,7 +415,7 @@
         .cart-event-badge {
             display: inline-block;
             padding: 5px 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
             border-radius: 20px;
             font-size: 12px;
@@ -430,7 +440,7 @@
         
         .cart-event-info-item i {
             margin-right: 10px;
-            color: #667eea;
+            color: #ff6b35;
             width: 20px;
         }
         
@@ -466,7 +476,7 @@
         
         .cart-service-price {
             font-weight: 700;
-            color: #667eea;
+            color: #ff6b35;
         }
         
         .cart-service-provider {
@@ -512,8 +522,8 @@
         }
         
         .cart-add-service:hover {
-            border-color: #667eea;
-            color: #667eea;
+            border-color: #ff6b35;
+            color: #ff6b35;
         }
         
         .cart-summary {
@@ -574,19 +584,19 @@
         }
         
         .btn-request-quote {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
             color: white;
         }
         
         .btn-request-quote:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.4);
         }
         
         .btn-save-config {
             background: white;
-            color: #667eea;
-            border: 2px solid #667eea;
+            color: #ff6b35;
+            border: 2px solid #ff6b35;
         }
         
         .btn-email-config {
@@ -644,10 +654,10 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <h1 onclick="window.location.href='index-justdial.html'" style="cursor: pointer;">Omnicore</h1>
+                <h1 onclick="window.location.href='index.html'" style="cursor: pointer;">Omnicore</h1>
             </div>
             <ul class="nav-menu">
-                <li><a href="index-justdial.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#"><i class="fas fa-phone"></i> Supporto</a></li>
             </ul>
             <div class="auth-buttons">
@@ -699,39 +709,55 @@
                 <!-- Step 1: Event Type -->
                 <div class="wizard-step active" data-step="1">
                     <h2 class="wizard-step-title">Che tipo di evento stai organizzando?</h2>
-                    <p class="wizard-step-subtitle">Seleziona la categoria del tuo evento</p>
+                    <p class="wizard-step-subtitle">Seleziona la categoria del tuo evento perfetto in Sardegna</p>
                     
                     <div class="event-types-grid">
                         <div class="event-type-card" data-event-type="matrimonio">
-                            <div class="event-type-icon">💍</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-ring"></i>
+                            </div>
                             <div class="event-type-name">Matrimonio</div>
                         </div>
                         <div class="event-type-card" data-event-type="battesimo">
-                            <div class="event-type-icon">⛪</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-church"></i>
+                            </div>
                             <div class="event-type-name">Battesimo</div>
                         </div>
                         <div class="event-type-card" data-event-type="compleanno">
-                            <div class="event-type-icon">🎂</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-birthday-cake"></i>
+                            </div>
                             <div class="event-type-name">Compleanno</div>
                         </div>
                         <div class="event-type-card" data-event-type="aziendale">
-                            <div class="event-type-icon">💼</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
                             <div class="event-type-name">Evento Aziendale</div>
                         </div>
                         <div class="event-type-card" data-event-type="comunione">
-                            <div class="event-type-icon">🕊️</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-cross"></i>
+                            </div>
                             <div class="event-type-name">Comunione</div>
                         </div>
                         <div class="event-type-card" data-event-type="laurea">
-                            <div class="event-type-icon">🎓</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
                             <div class="event-type-name">Laurea</div>
                         </div>
                         <div class="event-type-card" data-event-type="anniversario">
-                            <div class="event-type-icon">💕</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
                             <div class="event-type-name">Anniversario</div>
                         </div>
                         <div class="event-type-card" data-event-type="altro">
-                            <div class="event-type-icon">🎉</div>
+                            <div class="event-type-icon">
+                                <i class="fas fa-calendar-star"></i>
+                            </div>
                             <div class="event-type-name">Altro</div>
                         </div>
                     </div>
@@ -740,7 +766,7 @@
                 <!-- Step 2: Event Details -->
                 <div class="wizard-step" data-step="2">
                     <h2 class="wizard-step-title">Dettagli dell'Evento</h2>
-                    <p class="wizard-step-subtitle">Fornisci informazioni sul tuo evento</p>
+                    <p class="wizard-step-subtitle">Raccontaci di più sul tuo evento speciale</p>
                     
                     <div class="form-group">
                         <label class="form-label">Quante persone parteciperanno?</label>
@@ -809,7 +835,7 @@
                 <!-- Step 3: Services Selection -->
                 <div class="wizard-step" data-step="3">
                     <h2 class="wizard-step-title">Quali servizi ti servono?</h2>
-                    <p class="wizard-step-subtitle">Seleziona tutti i servizi necessari</p>
+                    <p class="wizard-step-subtitle">Scegli i migliori professionisti per il tuo evento</p>
                     
                     <div class="services-grid">
                         <div class="service-checkbox">
@@ -874,7 +900,7 @@
                 <!-- Step 4: Provider Selection (dynamic based on selected services) -->
                 <div class="wizard-step" data-step="4">
                     <h2 class="wizard-step-title">Scegli i Fornitori</h2>
-                    <p class="wizard-step-subtitle">Seleziona i fornitori per ogni servizio</p>
+                    <p class="wizard-step-subtitle">I migliori professionisti della Sardegna al tuo servizio</p>
                     
                     <div id="providersContainer">
                         <!-- This will be populated dynamically -->
@@ -884,7 +910,7 @@
                 <!-- Step 5: Summary -->
                 <div class="wizard-step" data-step="5">
                     <h2 class="wizard-step-title">🎉 Configurazione Completata!</h2>
-                    <p class="wizard-step-subtitle">Ecco il riepilogo del tuo evento</p>
+                    <p class="wizard-step-subtitle">Il tuo evento da sogno è quasi realtà</p>
                     
                     <div id="summaryContainer">
                         <!-- Summary will be populated here -->
@@ -987,47 +1013,47 @@
             providers: {}
         };
 
-        // Mock providers data
+        // Mock providers data - Fornitori in Sardegna
         const providersData = {
             location: [
-                { id: 1, name: 'Villa dei Pini', rating: 4.8, price: 500, details: 'Giardino • Capienza 100+ • Parcheggio' },
-                { id: 2, name: 'Agriturismo Sa Mandra', rating: 4.5, price: 350, details: 'Rustico • Capienza 80 • Vista Mare' },
-                { id: 3, name: 'Hotel Regina Margherita', rating: 4.9, price: 600, details: 'Elegante • Capienza 150+ • Centro città' }
+                { id: 1, name: 'Villa Paradiso Cagliari', rating: 4.9, price: 550, details: 'Giardino panoramico • Capienza 120+ • Vista mare' },
+                { id: 2, name: 'Agriturismo Su Barraccu', rating: 4.7, price: 380, details: 'Stile rustico sardo • Capienza 90 • Cucina tipica' },
+                { id: 3, name: 'Hotel T Cagliari', rating: 4.8, price: 650, details: 'Location elegante • Capienza 180+ • Centro città' }
             ],
             catering: [
-                { id: 1, name: 'Sapori di Sardegna', rating: 4.7, price: 25, details: '€25/persona • Cucina tradizionale • Menu personalizzabile' },
-                { id: 2, name: 'Il Gusto Sardo', rating: 4.6, price: 22, details: '€22/persona • Specialità locali • Bio' },
-                { id: 3, name: 'Catering Deledda', rating: 4.9, price: 30, details: '€30/persona • Alta cucina • Chef stellato' }
+                { id: 1, name: 'Sapori di Sardegna', rating: 4.8, price: 28, details: '€28/persona • Cucina tradizionale sarda • Menu mare e terra' },
+                { id: 2, name: 'Catering Sa Cardiga', rating: 4.6, price: 24, details: '€24/persona • Specialità locali • Prodotti biologici' },
+                { id: 3, name: 'Ristorante Dal Corsaro Catering', rating: 4.9, price: 35, details: '€35/persona • Alta cucina • Chef stellato Michelin' }
             ],
             fotografo: [
-                { id: 1, name: 'Studio Fotografico Fois', rating: 5.0, price: 400, details: 'Foto + Video • Album incluso • Droni' },
-                { id: 2, name: 'Foto Events Sardegna', rating: 4.8, price: 350, details: 'Fotoreportage • Editing professionale' },
-                { id: 3, name: 'Click & Smile Studio', rating: 4.6, price: 300, details: 'Pacchetto base • 200+ foto' }
+                { id: 1, name: 'Studio Fotografico Sanna', rating: 5.0, price: 450, details: 'Foto + Video 4K • Album premium • Drone incluso' },
+                { id: 2, name: 'Sardinia Wedding Photo', rating: 4.8, price: 380, details: 'Fotoreportage completo • Editing artistico' },
+                { id: 3, name: 'Marco Pinna Photography', rating: 4.7, price: 320, details: 'Pacchetto foto • 300+ scatti ritoccati' }
             ],
             musica: [
-                { id: 1, name: 'DJ Marco Live', rating: 4.9, price: 300, details: 'Attrezzatura professionale • 4h' },
-                { id: 2, name: 'The Sound Group', rating: 4.7, price: 400, details: 'Band live • Repertorio ampio' },
-                { id: 3, name: 'Music Events', rating: 4.5, price: 250, details: 'DJ Set • Luci incluse' }
+                { id: 1, name: 'DJ Tore Live', rating: 4.9, price: 350, details: 'Attrezzatura pro • Luci LED • 5 ore' },
+                { id: 2, name: 'I Tenores di Bitti', rating: 5.0, price: 500, details: 'Canto tradizionale sardo • Esibizione live' },
+                { id: 3, name: 'Sardinia Music Events', rating: 4.7, price: 280, details: 'DJ Set completo • Animazione inclusa' }
             ],
             decorazioni: [
-                { id: 1, name: 'Fior di Sardegna', rating: 4.8, price: 200, details: 'Allestimento floreale completo' },
-                { id: 2, name: 'Decor Dreams', rating: 4.6, price: 150, details: 'Palloncini • Centrotavola' },
-                { id: 3, name: 'Arte & Decor', rating: 4.9, price: 300, details: 'Allestimento personalizzato • Premium' }
+                { id: 1, name: 'Fiori di Sardegna', rating: 4.9, price: 220, details: 'Allestimento floreale completo • Fiori sardi' },
+                { id: 2, name: 'Decorazioni Su Coccoi', rating: 4.7, price: 180, details: 'Stile tradizionale sardo • Centrotavola artigianali' },
+                { id: 3, name: 'Event Design Cagliari', rating: 4.8, price: 320, details: 'Allestimento luxury • Design personalizzato' }
             ],
             torta: [
-                { id: 1, name: 'Pasticceria Artigiana', rating: 5.0, price: 180, details: 'Torta 3 piani • Design personalizzato' },
-                { id: 2, name: 'Dolce Vita Bakery', rating: 4.7, price: 150, details: 'Torta artigianale • Gusti classici' },
-                { id: 3, name: 'Sweet Dreams', rating: 4.8, price: 200, details: 'Torta scultura • Alta pasticceria' }
+                { id: 1, name: 'Pasticceria Meloni', rating: 5.0, price: 200, details: 'Torta 3 piani • Design su misura • Sapori sardi' },
+                { id: 2, name: 'Dolci di Barbagia', rating: 4.8, price: 160, details: 'Torta artigianale • Dolci tipici sardi' },
+                { id: 3, name: 'Sweet Art Sardegna', rating: 4.9, price: 220, details: 'Cake design artistico • Alta pasticceria' }
             ],
             'wedding-planner': [
-                { id: 1, name: 'Dream Wedding Planner', rating: 5.0, price: 1500, details: 'Coordinamento completo • Assistenza H24' },
-                { id: 2, name: 'Event Pro Sardegna', rating: 4.8, price: 1200, details: 'Organizzazione full service' },
-                { id: 3, name: 'Your Day Planner', rating: 4.7, price: 1000, details: 'Coordinamento giornata evento' }
+                { id: 1, name: 'Sardinia Dream Weddings', rating: 5.0, price: 1600, details: 'Coordinamento totale • Assistenza 24/7 • Esperienza decennale' },
+                { id: 2, name: 'Event Planner Cagliari', rating: 4.8, price: 1300, details: 'Organizzazione completa • Network fornitori premium' },
+                { id: 3, name: 'Your Perfect Day Sardinia', rating: 4.7, price: 1100, details: 'Coordinamento evento • Supporto logistico' }
             ],
             animazione: [
-                { id: 1, name: 'Magic Party', rating: 4.9, price: 200, details: 'Animatori professionisti • 2h' },
-                { id: 2, name: 'Fun Kids', rating: 4.6, price: 150, details: 'Giochi • Trucca bimbi' },
-                { id: 3, name: 'Happy Events', rating: 4.8, price: 250, details: 'Animazione + Gonfiabili' }
+                { id: 1, name: 'Animazione Fantasy Kids', rating: 4.9, price: 220, details: 'Animatori professionisti • 3 ore • Giochi e trucco bimbi' },
+                { id: 2, name: 'Party Time Sardegna', rating: 4.7, price: 180, details: 'Intrattenimento bambini • Giochi gonfiabili' },
+                { id: 3, name: 'Sardinia Kids Events', rating: 4.8, price: 280, details: 'Animazione premium • Spettacolo + Gonfiabili' }
             ]
         };
 
@@ -1223,14 +1249,14 @@
         function updateCart() {
             // Update event type badge
             const eventTypes = {
-                matrimonio: 'Matrimonio 💍',
-                battesimo: 'Battesimo ⛪',
-                compleanno: 'Compleanno 🎂',
-                aziendale: 'Evento Aziendale 💼',
-                comunione: 'Comunione 🕊️',
-                laurea: 'Laurea 🎓',
-                anniversario: 'Anniversario 💕',
-                altro: 'Evento 🎉'
+                matrimonio: 'Matrimonio',
+                battesimo: 'Battesimo',
+                compleanno: 'Compleanno',
+                aziendale: 'Evento Aziendale',
+                comunione: 'Comunione',
+                laurea: 'Laurea',
+                anniversario: 'Anniversario',
+                altro: 'Evento'
             };
             document.getElementById('cartEventType').textContent = eventTypes[eventData.eventType] || 'Seleziona evento';
             
@@ -1339,16 +1365,16 @@
         function loadSummary() {
             const container = document.getElementById('summaryContainer');
             container.innerHTML = `
-                <div style="background: #f8f9fa; border-radius: 15px; padding: 30px; margin-bottom: 20px;">
-                    <h3 style="margin-bottom: 20px;">📋 Dettagli Evento</h3>
-                    <p><strong>Tipo:</strong> ${getEventTypeName(eventData.eventType)}</p>
-                    <p><strong>Data:</strong> ${formatDate(eventData.date)}</p>
-                    <p><strong>Luogo:</strong> ${eventData.location}</p>
-                    <p><strong>Ospiti:</strong> ${eventData.guests} persone</p>
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%); border-radius: 15px; padding: 30px; margin-bottom: 20px; border: 2px solid #ff6b35;">
+                    <h3 style="margin-bottom: 20px; color: #ff6b35;"><i class="fas fa-calendar-check"></i> Dettagli Evento</h3>
+                    <p style="margin-bottom: 10px;"><strong>Tipo:</strong> ${getEventTypeName(eventData.eventType)}</p>
+                    <p style="margin-bottom: 10px;"><strong>Data:</strong> ${formatDate(eventData.date)}</p>
+                    <p style="margin-bottom: 10px;"><strong>Luogo:</strong> ${eventData.location}</p>
+                    <p style="margin-bottom: 10px;"><strong>Ospiti:</strong> ${eventData.guests} persone</p>
                 </div>
                 
                 <div style="background: #f8f9fa; border-radius: 15px; padding: 30px;">
-                    <h3 style="margin-bottom: 20px;">✅ Servizi & Fornitori</h3>
+                    <h3 style="margin-bottom: 20px; color: #2c3e50;"><i class="fas fa-check-circle" style="color: #4caf50;"></i> Servizi & Fornitori Selezionati</h3>
                     ${Object.keys(eventData.providers).map(service => {
                         const provider = eventData.providers[service];
                         let price = provider.price;
@@ -1356,15 +1382,18 @@
                             price = provider.price * getGuestCount(eventData.guests);
                         }
                         return `
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; padding: 15px; background: white; border-radius: 10px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 15px; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
                                 <div>
-                                    <strong>${getServiceName(service)}</strong><br>
-                                    <span style="color: #7f8c8d; font-size: 14px;">${provider.name}</span>
+                                    <strong style="color: #2c3e50;">${getServiceName(service)}</strong><br>
+                                    <span style="color: #7f8c8d; font-size: 14px;"><i class="fas fa-store"></i> ${provider.name}</span>
                                 </div>
-                                <div style="font-weight: 700; color: #667eea;">€${price}</div>
+                                <div style="font-weight: 700; color: #ff6b35; font-size: 20px;">€${price}</div>
                             </div>
                         `;
                     }).join('')}
+                    <div style="margin-top: 20px; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white; text-align: center;">
+                        <p style="margin: 0; font-size: 14px; opacity: 0.9;">🌟 Stai per creare un evento indimenticabile in Sardegna!</p>
+                    </div>
                 </div>
             `;
         }
@@ -1389,7 +1418,7 @@
         }
 
         function submitConfiguration() {
-            alert('🎉 Richiesta inviata con successo!\n\nI fornitori selezionati ti contatteranno a breve con i preventivi dettagliati.');
+            alert('🎉 Richiesta inviata con successo!\n\nI migliori fornitori della Sardegna ti contatteranno a breve con preventivi personalizzati.\n\nGrazie per aver scelto Omnicore!');
             // Here you would send data to backend
             console.log('Event Configuration:', eventData);
         }

@@ -3,33 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omnicore Service - La Vetrina Digitale delle Eccellenze Sarde</title>
-    <meta name="description" content="Scopri le migliori aziende della Sardegna. Piattaforma professionale per connettere imprese e clienti con mappe interattive e pagamenti sicuri.">
+    <title>Omnicore Service - Trova Qualsiasi Servizio in Sardegna</title>
+    <meta name="description" content="La directory completa delle attività in Sardegna. Trova ristoranti, hotel, medici, parrucchieri e molto altro!">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <h1><i class="fas fa-building"></i> Omnicore Service</h1>
+                <h1>Omnicore</h1>
             </div>
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="aziende.html">Aziende</a></li>
-                <li><a href="#mappa">Mappa</a></li>
-                <li><a href="#servizi">Servizi</a></li>
-                <li><a href="#contatti">Contatti</a></li>
+                <li><a href="#home"><i class="fas fa-language"></i> IT</a></li>
+                <li><a href="lavora-con-noi.html">Lavora con noi</a></li>
+                <li><a href="#investitori">Investitori</a></li>
+                <li><a href="#leads"><i class="fas fa-envelope"></i> Leads</a></li>
+                <li><a href="#pubblicita"><i class="fas fa-bullhorn"></i> Pubblicità</a></li>
+                <li><a href="aziende.html"><i class="fas fa-award"></i> <span class="business-badge">BUSINESS</span> Registrazione Gratuita</a></li>
             </ul>
             <div class="auth-buttons">
-                <button class="btn btn-outline" id="loginBtn">Accedi</button>
-                <button class="btn btn-primary" id="registerBtn">Registrati</button>
+                <button class="btn btn-download-app">
+                    <i class="fas fa-mobile-alt"></i> Download App
+                </button>
+                <i class="fas fa-bell notification-icon"></i>
+                <div class="auth-buttons-group">
+                    <button class="btn-login-small" id="loginBtn">
+                        <i class="fas fa-user"></i> Login
+                    </button>
+                    <button class="btn-signup-small" id="signupBtn">
+                        Sign Up
+                    </button>
+                </div>
             </div>
             <div class="hamburger">
                 <span></span>
@@ -39,598 +48,673 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <!-- Video Background -->
-        <div class="hero-video-background">
-            <video id="heroVideo" autoplay muted loop playsinline poster="media/videos/hero-video-poster.jpg">
-                <source src="media/videos/hero-video.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video-overlay"></div>
+    <!-- Hero Search Section - Stile Justdial -->
+    <section class="hero-search-top">
+        <div class="container">
+            <div class="hero-search-content">
+                <h1 class="hero-search-title">Cerca tra <span class="highlight-number">'5.000+'</span> Aziende</h1>
+                
+                <!-- Barra di Ricerca -->
+                <div class="search-bar-wrapper">
+                    <div class="search-location-box">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <select id="topLocationSelect" class="location-select-top">
+                            <option value="">Cagliari</option>
+                            <option value="sassari">Sassari</option>
+                            <option value="olbia">Olbia</option>
+                            <option value="alghero">Alghero</option>
+                            <option value="nuoro">Nuoro</option>
+                            <option value="oristano">Oristano</option>
+                            <option value="carbonia">Carbonia</option>
+                            <option value="quartu">Quartu Sant'Elena</option>
+                        </select>
+                    </div>
+                    <div class="search-input-box">
+                        <input type="text" id="topSearchInput" placeholder="Cerca Spa & Saloni" class="search-input-top">
+                        <button class="search-button-top" id="topSearchButton">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Card Promozionali Stile Justdial -->
+    <section class="promo-cards-section">
+        <!-- Video Background -->
+        <video class="promo-video-bg" autoplay loop muted playsinline>
+            <source src="media/videos/videoheromare.mp4" type="video/mp4">
+            <source src="media/videos/videoheromare.webm" type="video/webm">
+        </video>
+        
+        <!-- Overlay scuro sopra il video -->
+        <div class="promo-video-overlay"></div>
         
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-award"></i>
-                    <span>La Piattaforma #1 per le Aziende Sarde</span>
-                </div>
-                <h1>
-                    Connetti la Tua <span>Eccellenza</span>
-                    con Migliaia di Clienti
-                </h1>
-                <p>La vetrina digitale più completa della Sardegna. Mappe interattive, pagamenti integrati e visibilità garantita per far crescere il tuo business.</p>
-                
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="document.getElementById('aziende').scrollIntoView({behavior: 'smooth'})">
-                        <span>Esplora le Aziende</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <button class="btn btn-outline" onclick="document.getElementById('registerBtn').click()">
-                        <span>Registra la Tua Azienda</span>
-                        <i class="fas fa-building"></i>
-                    </button>
-                </div>
-                <div class="trust-badges">
-                    <span class="trust-badge"><i class="fas fa-shield-alt"></i> Pagamenti Sicuri</span>
-                    <span class="trust-badge"><i class="fas fa-lock"></i> Privacy Garantita</span>
-                    <span class="trust-badge"><i class="fas fa-check-circle"></i> Certificato SSL</span>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <span>Scorri per scoprire</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- Stats Banner -->
-    <section class="stats-banner">
-        <div class="container">
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number" data-target="1500">0</div>
-                    <p class="stat-label">Aziende Partner</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="50000">0</div>
-                    <p class="stat-label">Utenti Attivi</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="98">0</div>
-                    <p class="stat-label">% Soddisfazione</p>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number" data-target="145">0</div>
-                    <p class="stat-label">% Crescita Annua</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Soluzioni Section -->
-    <section class="soluzioni" id="servizi">
-        <div class="container">
-            <!-- Micro Header Animato -->
-            <div class="section-intro" data-aos="fade-down" data-aos-duration="800">
-                <span class="intro-sparkle">✨</span>
-                <p class="intro-text">Le Soluzioni Omnicore per chi vuole eccellere nel digitale</p>
-            </div>
-            
-            <!-- Barra Ricerca AI -->
-            <div class="ai-search-container" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
-                <div class="ai-search-wrapper">
-                    <div class="ai-badge">
-                        <i class="fas fa-brain"></i>
-                        <span>AI</span>
-                    </div>
-                    <input 
-                        type="text" 
-                        class="ai-search-input" 
-                        id="aiSearchInput"
-                        placeholder="Cerca con l'intelligenza artificiale... es: 'Ristorante ad Alghero', 'Artigiano ceramica'"
-                    >
-                    <button class="ai-search-btn" id="aiSearchBtn">
-                        <i class="fas fa-search"></i>
-                        <span>Cerca</span>
-                    </button>
-                </div>
-                <div class="ai-suggestions" id="aiSuggestions">
-                    <span class="suggestion-label">Suggerimenti:</span>
-                    <button class="suggestion-tag" data-query="Ristoranti Cagliari">
-                        <i class="fas fa-utensils"></i> Ristoranti Cagliari
-                    </button>
-                    <button class="suggestion-tag" data-query="Hotel Costa Smeralda">
-                        <i class="fas fa-hotel"></i> Hotel Costa Smeralda
-                    </button>
-                    <button class="suggestion-tag" data-query="Artigiani locali">
-                        <i class="fas fa-hammer"></i> Artigiani locali
-                    </button>
-                    <button class="suggestion-tag" data-query="Centri benessere">
-                        <i class="fas fa-spa"></i> Centri benessere
-                    </button>
-                </div>
-            </div>
-            
-            <div class="section-header">
-                <span class="section-badge" data-aos="fade-up" data-aos-delay="100">Soluzioni Complete</span>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">Soluzioni Digitali per Ogni Impresa Sarda</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="300">Dalla ristorazione all'artigianato — Omnicore ti aiuta a digitalizzare, gestire e far crescere la tua attività in modo intelligente.</p>
-            </div>
-            
-            <!-- Griglia Masonry Interattiva -->
-            <div class="solutions-masonry">
-                <!-- Card Ristoranti -->
-                <div class="solution-card large" data-aos="fade-up" data-aos-delay="100">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" 
-                             alt="Ristoranti" 
-                             loading="lazy">
-                        <div class="solution-overlay">
-                            <div class="solution-icon">
-                                <i class="fas fa-utensils"></i>
-                            </div>
-                            <div class="solution-content">
-                                <h3>Ristoranti & Bar</h3>
-                                <p>Menu digitale, prenotazioni online e delivery integrato</p>
-                                <a href="#aziende" class="solution-cta">
-                                    <span>Scopri la Soluzione</span>
-                                    <i class="fas fa-arrow-right solution-arrow"></i>
-                                </a>
+            <div class="promo-cards-slider">
+                <!-- Card Carousel Grande -->
+                <div class="promo-card promo-card-large">
+                    <div class="carousel-container">
+                        <!-- Slide 1: Matrimoni -->
+                        <div class="carousel-slide active">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=400&fit=crop" alt="Matrimoni">
+                            <div class="promo-card-overlay">
+                                <h3>Rendi Ogni Festa Indimenticabile</h3>
+                                <p>Prenota i migliori decoratori per matrimoni vicino a te</p>
+                                <button class="btn btn-primary" onclick="window.location.href='eventi-wizard.html'">Esplora Ora</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card Hotel -->
-                <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" 
-                             alt="Hotel" 
-                             loading="lazy">
-                        <div class="solution-overlay">
-                            <div class="solution-icon">
-                                <i class="fas fa-hotel"></i>
-                            </div>
-                            <div class="solution-content">
-                                <h3>Hotel & B&B</h3>
-                                <p>Sistema prenotazioni e pagamenti sicuri</p>
-                                <a href="#aziende" class="solution-cta">
-                                    <span>Scopri la Soluzione</span>
-                                    <i class="fas fa-arrow-right solution-arrow"></i>
-                                </a>
+                        
+                        <!-- Slide 2: Hotel -->
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hotel">
+                            <div class="promo-card-overlay">
+                                <h3>Prenota Hotel ai Migliori Prezzi</h3>
+                                <p>Confronta tariffe e trova l'alloggio perfetto</p>
+                                <button class="btn btn-primary" onclick="window.location.href='hotel.html'">Cerca Hotel</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card Artigianato -->
-                <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600" 
-                             alt="Artigianato" 
-                             loading="lazy">
-                        <div class="solution-overlay">
-                            <div class="solution-icon">
-                                <i class="fas fa-hammer"></i>
-                            </div>
-                            <div class="solution-content">
-                                <h3>Artigiani Sardi</h3>
-                                <p>Vetrina prodotti e e-commerce integrato</p>
-                                <a href="#aziende" class="solution-cta">
-                                    <span>Scopri la Soluzione</span>
-                                    <i class="fas fa-arrow-right solution-arrow"></i>
-                                </a>
+                        
+                        <!-- Slide 3: Traslochi -->
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=400&fit=crop" alt="Traslochi">
+                            <div class="promo-card-overlay">
+                                <h3>Packers & Movers</h3>
+                                <p>Traslochi sicuri e veloci con i migliori professionisti</p>
+                                <button class="btn btn-primary">Richiedi Preventivo</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card Negozi -->
-                <div class="solution-card tall" data-aos="fade-up" data-aos-delay="200">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600" 
-                             alt="Negozi" 
-                             loading="lazy">
-                        <div class="solution-overlay">
-                            <div class="solution-icon">
-                                <i class="fas fa-store"></i>
-                            </div>
-                            <div class="solution-content">
-                                <h3>Negozi & Commercio</h3>
-                                <p>Vendi online e in negozio con un solo sistema</p>
-                                <a href="#aziende" class="solution-cta">
-                                    <span>Scopri la Soluzione</span>
-                                    <i class="fas fa-arrow-right solution-arrow"></i>
-                                </a>
+                        
+                        <!-- Slide 4: Ricariche -->
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop" alt="Ricariche">
+                            <div class="promo-card-overlay">
+                                <h3>Paga Bollette in Un Click</h3>
+                                <p>Gestisci ricariche e pagamenti in modo semplice</p>
+                                <button class="btn btn-primary">Paga Ora</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card Professionisti -->
-                <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" 
-                             alt="Professionisti" 
-                             loading="lazy">
-                        <div class="solution-overlay">
-                            <div class="solution-icon">
-                                <i class="fas fa-briefcase"></i>
-                            </div>
-                            <div class="solution-content">
-                                <h3>Professionisti</h3>
-                                <p>Agenda online e gestione clienti avanzata</p>
-                                <a href="#aziende" class="solution-cta">
-                                    <span>Scopri la Soluzione</span>
-                                    <i class="fas fa-arrow-right solution-arrow"></i>
-                                </a>
+                        
+                        <!-- Slide 5: Ristoranti -->
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop" alt="Ristoranti">
+                            <div class="promo-card-overlay">
+                                <h3>Scopri i Migliori Ristoranti</h3>
+                                <p>Prenota un tavolo nei locali più esclusivi</p>
+                                <button class="btn btn-primary">Prenota Tavolo</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Card Benessere -->
-                <div class="solution-card wide" data-aos="fade-up" data-aos-delay="400">
-                    <div class="solution-image">
-                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" 
-                             alt="Centri Benessere" 
-                             loading="lazy">
-                        <div class="solution-overlay">
-                            <div class="solution-icon">
-                                <i class="fas fa-spa"></i>
-                            </div>
-                            <div class="solution-content">
-                                <h3>Centri Benessere</h3>
-                                <p>Prenotazioni trattamenti 24/7 e gestione abbonamenti</p>
-                                <a href="#aziende" class="solution-cta">
-                                    <span>Scopri la Soluzione</span>
-                                    <i class="fas fa-arrow-right solution-arrow"></i>
-                                </a>
+                        
+                        <!-- Slide 6: Beauty & Spa -->
+                        <div class="carousel-slide">
+                            <img src="https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=600&h=400&fit=crop" alt="Beauty">
+                            <div class="promo-card-overlay">
+                                <h3>Bellezza & Benessere</h3>
+                                <p>Prenota trattamenti spa e servizi di bellezza</p>
+                                <button class="btn btn-primary">Prenota Ora</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Testimonianze</span>
-                <h2 class="section-title">Cosa Dicono i Nostri Partner</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card" data-aos="fade-up">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"."</p>
-                    <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/100?img=33" alt="Maria Piras">
-                        <div>
-                            <h4>Francesco Stellato</h4>
-                            <p>Proprietario, Ristorante Mabrouk, Alghero</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Una piattaforma professionale e intuitiva. Il sistema di pagamenti integrato ci ha fatto risparmiare tempo e aumentato le vendite."</p>
-                    <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/100?img=12" alt="Giovanni Serra">
-                        <div>
-                            <h4>Giovanni Serra</h4>
-                            <p>CEO, Artigianato Sardo Premium</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Il supporto clienti è eccezionale. Sempre disponibili e professionali. La mappa interattiva ci porta nuovi clienti ogni giorno."</p>
-                    <div class="testimonial-author">
-                        <img src="https://i.pravatar.cc/100?img=45" alt="Laura Melis">
-                        <div>
-                            <h4>Laura Melis</h4>
-                            <p>Manager, Hotel Costa Smeralda</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Aziende in Evidenza Section -->
-    <section id="aziende" class="aziende-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge" data-aos="fade-up">⭐ Top del Mese</span>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Aziende in Evidenza</h2>
-                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Le migliori eccellenze sarde selezionate per te questo mese</p>
-            </div>
-            
-            <div class="featured-aziende-grid" id="featuredAziendeGrid">
-                <!-- Le 6 aziende TOP verranno caricate dinamicamente -->
-            </div>
-            
-            <!-- CTA per vedere tutte le aziende -->
-            <div class="view-all-cta" data-aos="fade-up" data-aos-delay="300">
-                <p class="cta-text">Vuoi scoprire tutte le aziende partner?</p>
-                <a href="aziende.html" class="btn btn-primary btn-large">
-                    <span>Esplora Tutte le Aziende</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <p class="cta-subtext">Oltre 1.500 aziende verificate ti aspettano</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section - Attrazioni Sarde -->
-    <section class="gallery-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Scopri la Sardegna</span>
-                <h2 class="section-title">Le Perle della Sardegna</h2>
-                <p class="section-subtitle">Esplora le meraviglie archeologiche e naturali della Sardegna, patrimonio di storia millenaria e bellezze uniche</p>
-            </div>
-            
-            <!-- Carousel Controls -->
-            <div class="gallery-carousel-container">
-                <button class="carousel-nav carousel-nav-left" id="carouselPrev">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <div class="gallery-carousel" id="galleryCarousel">
-                    <div class="gallery-carousel-track" id="carouselTrack">
-                        <!-- Card 1: Hotel Punta Negra -->
-                        <div class="gallery-carousel-item" 
-                             data-title="Hotel Punta Negra"
-                             data-location="Alghero (SS)"
-                             data-description="L'Hotel Punta Negra è un elegante resort 4 stelle situato sulla costa di Alghero, affacciato sul mare cristallino della Riviera del Corallo. Con le sue camere moderne, piscina panoramica, spa e ristorante gourmet, offre un'esperienza di lusso immersa nella natura sarda. Perfetto per vacanze romantiche e relax."
-                             data-info="📍 Località Punta Negra, Fertilia - Alghero<br>⭐ 4 stelle<br>🏊 Piscina panoramica e SPA<br>🍽️ Ristorante vista mare<br>📞 +39 079 123456<br>🌐 www.hotelpuntanegra.com">
-                            <div class="gallery-carousel-image">
-                                <img src="media/images/gallery/hotel-punta-negra.jpg" alt="Hotel Punta Negra" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'">
-                            </div>
-                            <div class="gallery-carousel-content">
-                                <div class="carousel-badge">
-                                    <i class="fas fa-hotel"></i>
-                                    <span>Hotel di Lusso</span>
-                                </div>
-                                <h3>Hotel Punta Negra</h3>
-                                <p class="carousel-location">
-                                    <i class="fas fa-map-marker-alt"></i> Alghero, Riviera del Corallo
-                                </p>
-                                <p class="carousel-description">Resort 4 stelle con vista mozzafiato sul mare e servizi di alta qualità</p>
-                                <button class="gallery-info-btn">
-                                    <i class="fas fa-info-circle"></i> Scopri di più
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Card 2: Nuraghe di Santu Antine -->
-                        <div class="gallery-carousel-item" 
-                             data-title="Nuraghe di Santu Antine"
-                             data-location="Torralba (SS)"
-                             data-description="Uno dei nuraghi meglio conservati della Sardegna, il Santu Antine è alto circa 17 metri ed è composto da tre torri. Costruito tra il 1600 e il 1200 a.C., rappresenta uno dei più maestosi esempi della civiltà nuragica. Il complesso include anche un villaggio circostante con capanne e mura difensive."
-                             data-info="📍 Località Santu Antine, Torralba<br>⏰ Orari: 9:00-19:00 (estate)<br>💶 Biglietto: €5,00<br>🌐 www.nuraghesintuantine.it">
-                            <div class="gallery-carousel-image">
-                                <img src="media/images/gallery/nuraghe-santu-antine.jpg" alt="Nuraghe di Santu Antine" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800'">
-                            </div>
-                            <div class="gallery-carousel-content">
-                                <div class="carousel-badge">
-                                    <i class="fas fa-landmark"></i>
-                                    <span>Sito Archeologico</span>
-                                </div>
-                                <h3>Nuraghe di Santu Antine</h3>
-                                <p class="carousel-location">
-                                    <i class="fas fa-map-marker-alt"></i> Torralba (SS)
-                                </p>
-                                <p class="carousel-description">Maestoso esempio della civiltà nuragica, alto 17 metri</p>
-                                <button class="gallery-info-btn">
-                                    <i class="fas fa-info-circle"></i> Scopri di più
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Card 3: Su Nuraxi di Barumini -->
-                        <div class="gallery-carousel-item" 
-                             data-title="Su Nuraxi di Barumini"
-                             data-location="Barumini (SU)"
-                             data-description="Patrimonio UNESCO dal 1997, Su Nuraxi è il più importante complesso nuragico della Sardegna. Risalente al 1500 a.C., include una torre centrale circondata da quattro torri angolari e un villaggio di oltre 50 capanne."
-                             data-info="📍 Via Su Nuraxi, Barumini<br>⏰ Orari: 9:00-20:00 (estate)<br>💶 Biglietto: €10,00<br>🏆 Patrimonio UNESCO<br>🌐 www.fondazionebarumini.it">
-                            <div class="gallery-carousel-image">
-                                <img src="media/images/gallery/su-nuraxi-barumini.jpg" alt="Su Nuraxi di Barumini" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?w=800'">
-                            </div>
-                            <div class="gallery-carousel-content">
-                                <div class="carousel-badge">
-                                    <i class="fas fa-award"></i>
-                                    <span>Patrimonio UNESCO</span>
-                                </div>
-                                <h3>Su Nuraxi di Barumini</h3>
-                                <p class="carousel-location">
-                                    <i class="fas fa-map-marker-alt"></i> Barumini (SU)
-                                </p>
-                                <p class="carousel-description">Il complesso nuragico più importante dell'isola</p>
-                                <button class="gallery-info-btn">
-                                    <i class="fas fa-info-circle"></i> Scopri di più
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Card 4: Cala Goloritze -->
-                        <div class="gallery-carousel-item" 
-                             data-title="Cala Goloritze"
-                             data-location="Baunei (NU)"
-                             data-description="Cala Goloritze è una delle spiagge più belle e iconiche della Sardegna. Con le sue acque turchesi cristalline, la sabbia bianchissima e il celebre pinnacolo di roccia calcarea alto 143 metri, è un vero paradiso."
-                             data-info="📍 Golfo di Orosei, Baunei<br>🥾 Trekking: 1h 30min circa<br>⛵ Accessibile via mare<br>🏆 Monumento Naturale">
-                            <div class="gallery-carousel-image">
-                                <img src="media/images/gallery/cala-goloritze.jpg" alt="Cala Goloritze" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800'">
-                            </div>
-                            <div class="gallery-carousel-content">
-                                <div class="carousel-badge">
-                                    <i class="fas fa-umbrella-beach"></i>
-                                    <span>Spiaggia Paradisiaca</span>
-                                </div>
-                                <h3>Cala Goloritze</h3>
-                                <p class="carousel-location">
-                                    <i class="fas fa-map-marker-alt"></i> Baunei, Golfo di Orosei
-                                </p>
-                                <p class="carousel-description">Acque cristalline e il famoso pinnacolo roccioso</p>
-                                <button class="gallery-info-btn">
-                                    <i class="fas fa-info-circle"></i> Scopri di più
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Card 5: Grotta di Nettuno -->
-                        <div class="gallery-carousel-item" 
-                             data-title="Grotta di Nettuno"
-                             data-location="Alghero (SS)"
-                             data-description="La Grotta di Nettuno è una delle grotte marine più spettacolari del Mediterraneo. Con stalattiti e stalagmiti millenarie, un lago salato interno e formazioni calcaree mozzafiato, offre uno spettacolo naturale unico."
-                             data-info="📍 Capo Caccia, Alghero<br>⏰ Orari: 9:00-19:00 (estate)<br>💶 Biglietto: €13,00<br>⛵ Accessibile via mare o via terra">
-                            <div class="gallery-carousel-image">
-                                <img src="media/images/gallery/grotta-nettuno.jpg" alt="Grotta di Nettuno" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800'">
-                            </div>
-                            <div class="gallery-carousel-content">
-                                <div class="carousel-badge">
-                                    <i class="fas fa-mountain"></i>
-                                    <span>Grotta Marina</span>
-                                </div>
-                                <h3>Grotta di Nettuno</h3>
-                                <p class="carousel-location">
-                                    <i class="fas fa-map-marker-alt"></i> Capo Caccia, Alghero
-                                </p>
-                                <p class="carousel-description">Stalattiti e stalagmiti millenarie mozzafiato</p>
-                                <button class="gallery-info-btn">
-                                    <i class="fas fa-info-circle"></i> Scopri di più
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="carousel-nav carousel-nav-right" id="carouselNext">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <!-- Carousel Indicators -->
-            <div class="carousel-indicators" id="carouselIndicators"></div>
-        </div>
-    </section>
-
-    <!-- Mappa Section -->
-    <section id="mappa" class="mappa-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Esplora</span>
-                <h2 class="section-title">Trova Aziende Vicino a Te</h2>
-                <p class="section-subtitle">Utilizza la nostra mappa interattiva per scoprire le migliori aziende della Sardegna</p>
-            </div>
-            <div class="map-controls">
-                <button class="map-btn active" data-filter="all">
-                    <i class="fas fa-th"></i> Tutte
-                </button>
-                <button class="map-btn" data-filter="ristorazione">
-                    <i class="fas fa-utensils"></i> Ristorazione
-                </button>
-                <button class="map-btn" data-filter="turismo">
-                    <i class="fas fa-hotel"></i> Turismo
-                </button>
-                <button class="map-btn" data-filter="artigianato">
-                    <i class="fas fa-hammer"></i> Artigianato
-                </button>
-                <button class="map-btn" data-filter="servizi">
-                    <i class="fas fa-briefcase"></i> Servizi
-                </button>
-            </div>
-            <div id="map"></div>
-        </div>
-    </section>
-
-    <!-- About CEO Section -->
-    <section class="about-ceo">
-        <div class="container">
-            <div class="ceo-container">
-                <div class="ceo-image-wrapper" data-aos="fade-right">
-                    <div class="ceo-image">
-                        <img src="media/images/team/ceo.png" alt="CEO Omnicore Service" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800'">
-                    </div>
-                    <div class="ceo-badge">
-                        <span>CEO & Founder</span>
-                    </div>
-                </div>
-                <div class="ceo-content" data-aos="fade-left">
-                    <h3>Chi Sono</h3>
-                    <h2>La Visione Dietro Omnicore Service</h2>
-                    <p>Sono nato e cresciuto in Sardegna, e ho sempre avuto la passione per l'innovazione tecnologica e l'imprenditoria. Nel 2019, ho fondato Omnicore Service con una missione chiara: digitalizzare le eccellenze sarde e renderle accessibili a migliaia di clienti.</p>
-                    <p>La mia esperienza nel settore IT e il profondo amore per questa terra mi hanno spinto a creare una piattaforma che non fosse solo tecnologica, ma che valorizzasse la cultura, la tradizione e l'artigianato locale. Oggi, Omnicore Service è la realtà leader nel digitale sardo, con oltre 1.500 aziende partner e 50.000 utenti attivi.</p>
-                    <p>Il mio obiettivo è continuare a innovare, supportare le imprese locali e contribuire alla crescita economica della Sardegna attraverso la tecnologia.</p>
-                    
-                    <div class="ceo-stats">
-                        <div class="ceo-stat">
-                            <h4>2019</h4>
-                            <p>Anno di Fondazione</p>
-                        </div>
-                        <div class="ceo-stat">
-                            <h4>1.500+</h4>
-                            <p>Aziende Supportate</p>
-                        </div>
-                        <div class="ceo-stat">
-                            <h4>15+</h4>
-                            <p>Anni di Esperienza</p>
-                        </div>
+                        
+                        <!-- Navigation Arrows -->
+                        <button class="carousel-prev" onclick="moveCarousel(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-next" onclick="moveCarousel(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <!-- Pause/Play Button -->
+                        <button class="carousel-pause" onclick="toggleCarousel()">
+                            <i class="fas fa-pause"></i>
+                        </button>
                     </div>
                     
-                    <div class="ceo-social">
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <!-- Carousel Dots -->
+                    <div class="carousel-dots">
+                        <span class="dot active" onclick="goToSlide(0)"></span>
+                        <span class="dot" onclick="goToSlide(1)"></span>
+                        <span class="dot" onclick="goToSlide(2)"></span>
+                        <span class="dot" onclick="goToSlide(3)"></span>
+                        <span class="dot" onclick="goToSlide(4)"></span>
+                        <span class="dot" onclick="goToSlide(5)"></span>
+                    </div>
+                </div>
+                
+                <!-- Card B2B -->
+                <div class="promo-card promo-card-blue">
+                    <img src="media/images/promo-cards/b2b-promo.jpg" alt="B2B">
+                    <div class="promo-card-overlay">
+                        <i class="fas fa-handshake promo-icon"></i>
+                        <h3>B2B</h3>
+                        <p class="promo-subtitle">Preventivi Rapidi</p>
+                        <div class="promo-features">
+                            <span><i class="fas fa-check"></i> 1000+ Fornitori</span>
+                            <span><i class="fas fa-check"></i> Risposte Veloci</span>
+                        </div>
+                        <div class="promo-explore">
+                            <span class="explore-text">Esplora</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Riparazioni & Servizi -->
+                <div class="promo-card promo-card-dark">
+                    <img src="media/images/promo-cards/repairs-promo.jpg" alt="Riparazioni e Servizi">
+                    <div class="promo-card-overlay">
+                        <i class="fas fa-tools promo-icon"></i>
+                        <h3>RIPARAZIONI & SERVIZI</h3>
+                        <p class="promo-subtitle">Trova Esperti</p>
+                        <div class="promo-features">
+                            <span>Elettricisti</span>
+                            <span>Idraulici</span>
+                            <span>Meccanici</span>
+                        </div>
+                        <div class="promo-explore">
+                            <span class="explore-text">Esplora</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Immobiliare -->
+                <div class="promo-card promo-card-purple">
+                    <img src="media/images/promo-cards/real-estate-promo.png" alt="Immobiliare">
+                    <div class="promo-card-overlay">
+                        <i class="fas fa-home promo-icon"></i>
+                        <h3>IMMOBILIARE</h3>
+                        <p class="promo-subtitle">I Migliori Agenti</p>
+                        <div class="promo-features">
+                            <span>Vendita</span>
+                            <span>Affitto</span>
+                            <span>Consulenza</span>
+                        </div>
+                        <div class="promo-explore">
+                            <span class="explore-text">Esplora</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card Dottori -->
+                <div class="promo-card promo-card-green">
+                    <img src="media/images/promo-cards/doctors-promo.png" alt="Dottori">
+                    <div class="promo-card-overlay">
+                        <i class="fas fa-user-md promo-icon"></i>
+                        <h3>DOTTORI</h3>
+                        <p class="promo-subtitle">Prenota Ora</p>
+                        <div class="promo-features">
+                            <span>Specialisti</span>
+                            <span>Check-up</span>
+                            <span>Emergenze</span>
+                        </div>
+                        <div class="promo-explore">
+                            <span class="explore-text">Esplora</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <!-- Categorie Principali -->
+    <section id="categorie" class="categories-section categories-top">
         <div class="container">
-            <div class="cta-content">
-                <h2>Pronto a Far Crescere la Tua Azienda?</h2>
-                <p>Unisciti a oltre 1.500 aziende sarde che hanno scelto Omnicore Service per aumentare la loro visibilità e le vendite</p>
-                <div class="cta-buttons">
-                    <button class="btn btn-primary" onclick="document.getElementById('registerBtn').click()">
-                        <span>Inizia Gratis</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                    <button class="btn btn-outline" onclick="window.location.href='#contatti'">
-                        <span>Contatta il Team</span>
-                        <i class="fas fa-phone"></i>
-                    </button>
+            <div class="categories-wrapper collapsed">
+                <div class="categories-grid">
+                    <!-- Food & Hospitality -->
+                    <!-- Ristoranti -->
+                    <div class="category-card" data-category="ristoranti" onclick="window.location.href='ristoranti.html'">
+                        <div class="category-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h4>Ristoranti</h4>
+                    </div>
+                    
+                    <!-- Hotel -->
+                    <div class="category-card" data-category="hotel">
+                        <div class="category-icon">
+                            <i class="fas fa-hotel"></i>
+                        </div>
+                        <h4>Hotel</h4>
+                    </div>
+                    
+                    <!-- Bellezza & Spa -->
+                    <div class="category-card" data-category="bellezza">
+                        <div class="category-icon">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <h4>Bellezza & Spa</h4>
+                    </div>
+                    
+                    <!-- Palestre -->
+                    <div class="category-card" data-category="palestre">
+                        <div class="category-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h4>Palestre</h4>
+                    </div>
+                    
+                    <!-- Events & Special -->
+                    <!-- Wedding Planning -->
+                    <div class="category-card category-wedding" data-category="matrimoni">
+                        <span class="wedding-badge">WEDDING</span>
+                        <div class="category-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h4>Matrimoni</h4>
+                    </div>
+                    
+                    <!-- Eventi -->
+                    <div class="category-card" data-category="eventi">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h4>Eventi</h4>
+                    </div>
+                    
+                    <!-- Fotografi -->
+                    <div class="category-card" data-category="fotografi">
+                        <div class="category-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4>Fotografi</h4>
+                    </div>
+                    
+                    <!-- Health & Wellness -->
+                    <!-- Ospedali -->
+                    <div class="category-card" data-category="ospedali">
+                        <div class="category-icon">
+                            <i class="fas fa-hospital"></i>
+                        </div>
+                        <h4>Ospedali</h4>
+                    </div>
+                    
+                    <!-- Dentisti -->
+                    <div class="category-card" data-category="dentisti">
+                        <div class="category-icon">
+                            <i class="fas fa-tooth"></i>
+                        </div>
+                        <h4>Dentisti</h4>
+                    </div>
+                    
+                    <!-- Pet Shops -->
+                    <div class="category-card" data-category="animali">
+                        <div class="category-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <h4>Pet Shops</h4>
+                    </div>
+                    
+                    <!-- Education & Transport -->
+                    <!-- Educazione -->
+                    <div class="category-card" data-category="educazione">
+                        <div class="category-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Educazione</h4>
+                    </div>
+                    
+                    <!-- Scuole Guida -->
+                    <div class="category-card" data-category="scuoleguida">
+                        <div class="category-icon">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <h4>Scuole Guida</h4>
+                    </div>
+                    
+                    <!-- Noleggio -->
+                    <div class="category-card" data-category="noleggio">
+                        <div class="category-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h4>Noleggio Auto</h4>
+                    </div>
+                    
+                    <!-- Home Decor -->
+                    <div class="category-card" data-category="arredamento">
+                        <div class="category-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h4>Arredamento</h4>
+                    </div>
+                    
+                    <!-- Professional Services - Hidden by default -->
+                    <!-- Avvocati -->
+                    <div class="category-card" data-category="avvocati">
+                        <div class="category-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4>Avvocati</h4>
+                    </div>
+                    
+                    <!-- Commercialisti -->
+                    <div class="category-card" data-category="commercialisti">
+                        <div class="category-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h4>Commercialisti</h4>
+                    </div>
+                    
+                    <!-- Assicurazioni -->
+                    <div class="category-card" data-category="assicurazioni">
+                        <div class="category-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Assicurazioni</h4>
+                    </div>
+                    
+                    <!-- Immobiliare -->
+                    <div class="category-card" data-category="immobiliare">
+                        <div class="category-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>Immobiliare</h4>
+                    </div>
+                    
+                    <!-- Home Services -->
+                    <!-- Meccanici -->
+                    <div class="category-card" data-category="meccanici">
+                        <div class="category-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h4>Meccanici</h4>
+                    </div>
+                    
+                    <!-- Elettricisti -->
+                    <div class="category-card" data-category="elettricisti">
+                        <div class="category-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h4>Elettricisti</h4>
+                    </div>
+                    
+                    <!-- Idraulici -->
+                    <div class="category-card" data-category="idraulici">
+                        <div class="category-icon">
+                            <i class="fas fa-faucet"></i>
+                        </div>
+                        <h4>Idraulici</h4>
+                    </div>
+                    
+                    <!-- Edilizia -->
+                    <div class="category-card" data-category="edilizia">
+                        <div class="category-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h4>Edilizia</h4>
+                    </div>
+                    
+                    <!-- Logistics -->
+                    <!-- Pacchi & Corrieri -->
+                    <div class="category-card" data-category="corrieri">
+                        <div class="category-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h4>Corrieri</h4>
+                    </div>
+                    
+                    <!-- Spedizioni -->
+                    <div class="category-card" data-category="spedizioni">
+                        <div class="category-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h4>Spedizioni</h4>
+                    </div>
+                    
+                    <!-- Tutte le Categorie -->
+                    <div class="category-card category-card-all" data-category="tutte">
+                        <div class="category-icon">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <h4>Vedi Tutte</h4>
+                    </div>
                 </div>
-                <div class="cta-features">
-                    <span><i class="fas fa-check"></i> 30 giorni di prova gratuita</span>
-                    <span><i class="fas fa-check"></i> Nessuna carta richiesta</span>
-                    <span><i class="fas fa-check"></i> Supporto dedicato</span>
+                
+                <!-- Blur Overlay (shown when collapsed) -->
+                <div class="categories-blur-overlay"></div>
+            </div>
+            
+            <!-- View More Button -->
+            <button class="view-more-btn" onclick="toggleCategories()">
+                <span class="view-more-text">Visualizza Altro</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </section>    <!-- Sezioni Contenuto Ricco -->
+    <!-- Wedding Requisites Section -->
+    <section class="content-boxes-section">
+        <div class="container">
+            <div class="content-boxes-grid">
+                <!-- Wedding Box -->
+                <div class="content-box">
+                    <div class="content-box-header">
+                        <h3>Requisiti per Matrimoni</h3>
+                        <a href="#" class="explore-link">Esplora Altri <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="content-box-items">
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1519167758481-83f29da8c4c0?w=300&h=200&fit=crop" alt="Sale Ricevimenti">
+                            <h4>Sale Ricevimenti</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=300&h=200&fit=crop" alt="Requisiti Sposa">
+                            <h4>Requisiti Sposa</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=300&h=200&fit=crop" alt="Catering">
+                            <h4>Catering</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beauty & Spa Box -->
+                <div class="content-box">
+                    <div class="content-box-header">
+                        <h3>Bellezza & Spa</h3>
+                        <a href="#" class="explore-link">Esplora Altri <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="content-box-items">
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=300&h=200&fit=crop" alt="Saloni di Bellezza">
+                            <h4>Saloni di Bellezza</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=300&h=200&fit=crop" alt="Spa & Massaggi">
+                            <h4>Spa & Massaggi</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=300&h=200&fit=crop" alt="Parrucchieri">
+                            <h4>Parrucchieri</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="content-boxes-grid">
+                <!-- Repairs & Services Box -->
+                <div class="content-box">
+                    <div class="content-box-header">
+                        <h3>Riparazioni & Servizi</h3>
+                        <a href="#" class="explore-link">Esplora Altri <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="content-box-items">
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=300&h=200&fit=crop" alt="Servizio AC">
+                            <h4>Servizio AC</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=300&h=200&fit=crop" alt="Servizio Auto">
+                            <h4>Servizio Auto</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=300&h=200&fit=crop" alt="Servizio Moto">
+                            <h4>Servizio Moto</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Needs Box -->
+                <div class="content-box">
+                    <div class="content-box-header">
+                        <h3>Necessità Quotidiane</h3>
+                        <a href="#" class="explore-link">Esplora Altri <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                    <div class="content-box-items">
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=300&h=200&fit=crop" alt="Cinema">
+                            <h4>Cinema</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=300&h=200&fit=crop" alt="Alimentari">
+                            <h4>Alimentari</h4>
+                        </div>
+                        <div class="content-item">
+                            <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=300&h=200&fit=crop" alt="Elettricisti">
+                            <h4>Elettricisti</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bills & Recharge Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header-with-badge">
+                <h2>Bollette & Ricariche</h2>
+                <span class="section-badge">NEW</span>
+            </div>
+            <p class="section-subtitle">Paga bollette e ricariche istantaneamente con un click</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile</h4>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Elettricità</h4>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h4>DTH</h4>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4>Acqua</h4>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h4>Gas</h4>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Assicurazioni</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Bookings Section -->
+    <section class="services-section services-section-alt">
+        <div class="container">
+            <h2>Prenotazioni Viaggi</h2>
+            <p class="section-subtitle">Prenota voli, hotel e viaggi al miglior prezzo</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h4>Voli</h4>
+                    <p class="service-subtitle">Tariffe Convenienti</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <i class="fas fa-bus"></i>
+                    </div>
+                    <h4>Bus</h4>
+                    <p class="service-subtitle">Prenotazioni Online</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <i class="fas fa-train"></i>
+                    </div>
+                    <h4>Treni</h4>
+                    <p class="service-subtitle">Viaggi Comodi</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h4>Hotel</h4>
+                    <p class="service-subtitle">Prezzi Convenienti</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h4>Noleggio Auto</h4>
+                    <p class="service-subtitle">Ovunque, In Qualsiasi Momento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trending Searches Section -->
+    <section class="trending-section">
+        <div class="container">
+            <div class="section-header-with-badge">
+                <h2>Ricerche di Tendenza Vicino a Te</h2>
+                <span class="section-badge trending-badge">HOT</span>
+            </div>
+            <p class="section-subtitle">Resta aggiornato sulle ricerche più popolari nel tuo quartiere</p>
+            
+            <div class="trending-grid">
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=250&fit=crop" alt="Interior Design">
+                    <div class="trending-content">
+                        <h4>Interior Designer per Uffici</h4>
+                        <a href="#" class="trending-link">Esplora <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=400&h=250&fit=crop" alt="Interior Design Showroom">
+                    <div class="trending-content">
+                        <h4>Interior Designer per Showroom</h4>
+                        <a href="#" class="trending-link">Esplora <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=250&fit=crop" alt="Noleggio Bici">
+                    <div class="trending-content">
+                        <h4>Noleggio Biciclette</h4>
+                        <a href="#" class="trending-link">Esplora <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+                <div class="trending-card">
+                    <img src="https://images.unsplash.com/photo-1485965120184-e220f721d03e?w=400&h=250&fit=crop" alt="Motociclette">
+                    <div class="trending-content">
+                        <h4>Moto Usate in Vendita</h4>
+                        <a href="#" class="trending-link">Esplora <i class="fas fa-chevron-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -642,15 +726,14 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <h3>Omnicore Service</h3>
-                    <p>La piattaforma leader per le aziende sarde. Connettiti con migliaia di clienti e fai crescere il tuo business.</p>
+                    <p>La directory completa per trovare qualsiasi servizio in Sardegna. Connetti con le migliori aziende locali.</p>
                 </div>
                 <div class="footer-col">
                     <h4>Link Utili</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#aziende">Aziende</a></li>
-                        <li><a href="#mappa">Mappa</a></li>
-                        <li><a href="#servizi">Servizi</a></li>
+                        <li><a href="aziende.html">Aziende</a></li>
+                        <li><a href="#categorie">Categorie</a></li>
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Termini e Condizioni</a></li>
                     </ul>
@@ -680,111 +763,111 @@
         </div>
     </footer>
 
-    <!-- Modal Login -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Bentornato!</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" placeholder="mario.rossi@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                    <span>Accedi</span>
-                    <i class="fas fa-sign-in-alt"></i>
-                </button>
-                <p class="form-footer">Non hai un account? <a href="#" id="switchToRegister">Registrati ora</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal Registrazione -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Crea il Tuo Account</h2>
-            <form id="registerForm">
-                <div class="form-group">
-                    <label for="registerName">Nome Completo</label>
-                    <input type="text" id="registerName" placeholder="Mario Rossi" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" placeholder="mario.rossi@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" placeholder="Minimo 6 caratteri" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerConfirmPassword">Conferma Password</label>
-                    <input type="password" id="registerConfirmPassword" placeholder="Ripeti la password" required>
-                </div>
-                <div class="form-group">
-                    <label for="userType">Tipo di Utente</label>
-                    <select id="userType" required>
-                        <option value="">Seleziona...</option>
-                        <option value="cliente">Cliente</option>
-                        <option value="azienda">Proprietario Azienda</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">
-                    <span>Registrati</span>
-                    <i class="fas fa-user-plus"></i>
-                </button>
-                <p class="form-footer">Hai già un account? <a href="#" id="switchToLogin">Accedi</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Modal Attrazione Sardegna -->
-    <div id="attractionModal" class="modal">
-        <div class="modal-content attraction-modal-content">
-            <span class="close">&times;</span>
-            <div class="attraction-modal-body">
-                <div class="attraction-modal-image">
-                    <img id="attractionModalImage" src="" alt="">
-                </div>
-                <div class="attraction-modal-info">
-                    <div class="attraction-badge" id="attractionModalBadge">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span id="attractionModalLocation"></span>
-                    </div>
-                    <h2 id="attractionModalTitle"></h2>
-                    <p id="attractionModalDescription" class="attraction-description"></p>
-                    <div class="attraction-details" id="attractionModalInfo"></div>
-                    <div class="attraction-modal-actions">
-                        <button class="btn btn-primary" onclick="window.open('https://www.google.com/maps/search/' + encodeURIComponent(document.getElementById('attractionModalTitle').textContent + ' Sardegna'), '_blank')">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <span>Vedi su Maps</span>
-                        </button>
-                        <button class="btn btn-outline" onclick="document.getElementById('attractionModal').style.display='none'">
-                            <span>Chiudi</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/app.js"></script>
     <script>
-        // Inizializza AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
+        // ========== ROTATING PLACEHOLDER ==========
+        const searchInput = document.getElementById('topSearchInput');
+        const placeholders = [
+            'Cerca Spa & Saloni',
+            'Cerca Ristoranti',
+            'Cerca Hotel',
+            'Cerca Medici',
+            'Cerca Parrucchieri',
+            'Cerca Palestre',
+            'Cerca Elettricisti',
+            'Cerca Idraulici',
+            'Cerca Meccanici',
+            'Cerca Avvocati'
+        ];
+        
+        let currentPlaceholder = 0;
+        
+        function updatePlaceholder() {
+            // Solo se l'utente non sta digitando
+            if (searchInput.value === '') {
+                searchInput.placeholder = placeholders[currentPlaceholder];
+                currentPlaceholder = (currentPlaceholder + 1) % placeholders.length;
+            }
+        }
+        
+        // Cambia placeholder ogni 3 secondi
+        setInterval(updatePlaceholder, 3000);
+        
+        // ========== CAROUSEL FUNCTIONALITY ==========
+        let currentSlide = 0;
+        let isPlaying = true;
+        let carouselInterval;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Add active class to current slide and dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function moveCarousel(direction) {
+            let newIndex = currentSlide + direction;
+            
+            if (newIndex >= totalSlides) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = totalSlides - 1;
+            }
+            
+            showSlide(newIndex);
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function toggleCarousel() {
+            const pauseBtn = document.querySelector('.carousel-pause i');
+            
+            if (isPlaying) {
+                clearInterval(carouselInterval);
+                pauseBtn.classList.remove('fa-pause');
+                pauseBtn.classList.add('fa-play');
+                isPlaying = false;
+            } else {
+                startCarousel();
+                pauseBtn.classList.remove('fa-play');
+                pauseBtn.classList.add('fa-pause');
+                isPlaying = true;
+            }
+        }
+
+        function startCarousel() {
+            carouselInterval = setInterval(() => {
+                moveCarousel(1);
+            }, 4000); // Cambia slide ogni 4 secondi
+        }
+
+        // Start carousel on page load
+        startCarousel();
+
+        // Pause carousel on hover
+        document.querySelector('.promo-card-large').addEventListener('mouseenter', function() {
+            if (isPlaying) {
+                clearInterval(carouselInterval);
+            }
         });
 
+        document.querySelector('.promo-card-large').addEventListener('mouseleave', function() {
+            if (isPlaying) {
+                startCarousel();
+            }
+        });
+
+        // ========== EXISTING SCRIPTS ==========
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.querySelector('.header');
@@ -792,6 +875,43 @@
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
+            }
+        });
+
+        // Category cards click
+        document.querySelectorAll('.category-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                
+                // Se è ristoranti, vai alla pagina dedicata
+                if (category === 'ristoranti') {
+                    window.location.href = 'ristoranti.html';
+                } 
+                // Se è hotel, vai alla pagina dedicata
+                else if (category === 'hotel') {
+                    window.location.href = 'hotel.html';
+                }
+                // Per matrimoni e eventi, vai alla pagina aziende con il filtro categoria
+                else if (category === 'matrimoni' || category === 'eventi') {
+                    window.location.href = `aziende.html?category=${category}`;
+                }
+                else {
+                    window.location.href = `aziende.html?category=${category}`;
+                }
+            });
+        });
+
+        // Top search functionality
+        document.getElementById('topSearchButton').addEventListener('click', function() {
+            const searchTerm = document.getElementById('topSearchInput').value;
+            const location = document.getElementById('topLocationSelect').value;
+            window.location.href = `aziende.html?search=${searchTerm}&location=${location}`;
+        });
+
+        // Enter key search
+        document.getElementById('topSearchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('topSearchButton').click();
             }
         });
     </script>

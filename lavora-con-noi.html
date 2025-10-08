@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diventa Partner Omnicore - Fai Crescere la Tua Azienda in Sardegna</title>
+    <meta name="description" content="Unisciti alle migliori aziende sarde. Aumenta visibilità, clienti e fatturato con la piattaforma digitale leader in Sardegna. Partnership vantaggiose e risultati garantiti.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><i class="fas fa-building"></i> Omnicore Service</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="aziende.html">Aziende</a></li>
+                <li><a href="#mappa">Mappa</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="loginBtn">Accedi</button>
+                <button class="btn btn-primary" id="registerBtn">Registrati</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- Video Background -->
+        <div class="hero-video-background">
+            <video id="heroVideo" autoplay muted loop playsinline poster="media/videos/hero-video-poster.jpg">
+                <source src="media/videos/hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-handshake"></i>
+                    <span>Partnership Strategiche per il Successo</span>
+                </div>
+                <h1>
+                    Trasforma la Tua <span>Azienda</span>
+                    con Omnicore Service
+                </h1>
+                <p>Unisciti a oltre 1.500 aziende sarde che hanno scelto Omnicore per digitalizzarsi e crescere. Aumenta la tua visibilità, acquisisci nuovi clienti e moltiplica il tuo fatturato con la piattaforma leader in Sardegna.</p>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('registerBtn').click()">
+                        <span>Diventa Partner Ora</span>
+                        <i class="fas fa-rocket"></i>
+                    </button>
+                    <button class="btn btn-outline" onclick="document.getElementById('servizi').scrollIntoView({behavior: 'smooth'})">
+                        <span>Scopri i Vantaggi</span>
+                        <i class="fas fa-gift"></i>
+                    </button>
+                </div>
+                <div class="trust-badges">
+                    <span class="trust-badge"><i class="fas fa-chart-line"></i> +145% Crescita Media</span>
+                    <span class="trust-badge"><i class="fas fa-users"></i> 50K Clienti Attivi</span>
+                    <span class="trust-badge"><i class="fas fa-award"></i> 98% Soddisfazione</span>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scorri per scoprire</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+        <div class="container">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" data-target="1500">0</div>
+                    <p class="stat-label">Aziende Partner di Successo</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="50000">0</div>
+                    <p class="stat-label">Clienti Raggiunti Ogni Mese</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="145">0</div>
+                    <p class="stat-label">% Crescita Media Fatturato</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-target="98">0</div>
+                    <p class="stat-label">% Partner Soddisfatti</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chi Siamo Section - Nuova -->
+    <section class="about-platform" style="padding: 100px 0; background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+        <div class="container">
+            <div class="row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+                <!-- Colonna Sinistra - Contenuto -->
+                <div class="about-content" data-aos="fade-right">
+                    <span class="section-badge" style="display: inline-block; background: linear-gradient(135deg, #f7931e 0%, #ffc107 100%); color: white; padding: 8px 20px; border-radius: 30px; font-weight: 600; font-size: 14px; margin-bottom: 20px;">
+                        🏆 Chi Siamo
+                    </span>
+                    <h2 style="font-size: 42px; font-weight: 800; line-height: 1.2; margin-bottom: 25px; color: #2c3e50;">
+                        La Piattaforma Digitale<br>
+                        <span style="background: linear-gradient(135deg, #f7931e 0%, #ffc107 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">N°1 in Sardegna</span>
+                    </h2>
+                    <p style="font-size: 18px; line-height: 1.8; color: #555; margin-bottom: 30px;">
+                        <strong>Omnicore Service</strong> è la piattaforma che connette le migliori aziende sarde con migliaia di clienti ogni giorno. Siamo il ponte digitale tra eccellenze locali e persone che cercano qualità e professionalità.
+                    </p>
+                    
+                    <div class="features-list" style="margin-bottom: 35px;">
+                        <div class="feature-item" style="display: flex; align-items: start; gap: 15px; margin-bottom: 20px;">
+                            <div style="width: 50px; height: 50px; min-width: 50px; background: linear-gradient(135deg, #f7931e 0%, #ffc107 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-search" style="font-size: 22px; color: white;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #2c3e50;">Directory Completa</h4>
+                                <p style="color: #666; line-height: 1.6; margin: 0;">Oltre 1.500 aziende verificate in ogni settore: ristorazione, turismo, artigianato, servizi professionali e molto altro.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" style="display: flex; align-items: start; gap: 15px; margin-bottom: 20px;">
+                            <div style="width: 50px; height: 50px; min-width: 50px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-rocket" style="font-size: 22px; color: white;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #2c3e50;">Strumenti Digitali Avanzati</h4>
+                                <p style="color: #666; line-height: 1.6; margin: 0;">Diamo alle aziende tutto ciò che serve: profilo online, prenotazioni, pagamenti, e-commerce, mappe interattive e analytics.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item" style="display: flex; align-items: start; gap: 15px;">
+                            <div style="width: 50px; height: 50px; min-width: 50px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-chart-line" style="font-size: 22px; color: white;"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 18px; font-weight: 700; margin-bottom: 8px; color: #2c3e50;">Risultati Misurabili</h4>
+                                <p style="color: #666; line-height: 1.6; margin: 0;">Le nostre aziende partner crescono in media del 145% nel primo anno. Aumentiamo visibilità, clienti e fatturato.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button class="btn btn-primary" onclick="document.getElementById('servizi').scrollIntoView({behavior: 'smooth'})" style="background: linear-gradient(135deg, #f7931e 0%, #ffc107 100%); color: white; padding: 15px 35px; border: none; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;">
+                            <span>Scopri Come Funziona</span>
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                        <button class="btn btn-outline" onclick="document.getElementById('registerBtn').click()" style="background: white; color: #f7931e; padding: 15px 35px; border: 2px solid #f7931e; border-radius: 10px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 10px;">
+                            <span>Diventa Partner</span>
+                            <i class="fas fa-handshake"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Colonna Destra - Visual -->
+                <div class="about-visual" data-aos="fade-left">
+                    <div style="position: relative;">
+                        <!-- Card principale -->
+                        <div style="background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.15);">
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f7931e 0%, #ffc107 100%); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                                    <i class="fas fa-building" style="font-size: 36px; color: white;"></i>
+                                </div>
+                                <h3 style="font-size: 24px; font-weight: 700; color: #2c3e50; margin-bottom: 10px;">Ecosistema Completo</h3>
+                                <p style="color: #666;">Tutto in un'unica piattaforma</p>
+                            </div>
+                            
+                            <div class="ecosystem-items" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center;">
+                                    <i class="fas fa-store" style="font-size: 28px; color: #f7931e; margin-bottom: 10px;"></i>
+                                    <div style="font-weight: 700; color: #2c3e50; font-size: 16px;">Profilo Aziendale</div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center;">
+                                    <i class="fas fa-calendar-check" style="font-size: 28px; color: #667eea; margin-bottom: 10px;"></i>
+                                    <div style="font-weight: 700; color: #2c3e50; font-size: 16px;">Prenotazioni</div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center;">
+                                    <i class="fas fa-credit-card" style="font-size: 28px; color: #4caf50; margin-bottom: 10px;"></i>
+                                    <div style="font-weight: 700; color: #2c3e50; font-size: 16px;">Pagamenti</div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 20px; border-radius: 12px; text-align: center;">
+                                    <i class="fas fa-chart-bar" style="font-size: 28px; color: #ffc107; margin-bottom: 10px;"></i>
+                                    <div style="font-weight: 700; color: #2c3e50; font-size: 16px;">Analytics</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Badge floating -->
+                        <div style="position: absolute; top: -20px; right: -20px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; padding: 15px 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(76, 175, 80, 0.3); font-weight: 700;">
+                            <i class="fas fa-check-circle"></i> 100% Sardo
+                        </div>
+                        
+                        <!-- Stats floating bottom -->
+                        <div style="position: absolute; bottom: -30px; left: -30px; background: white; padding: 20px 30px; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.15);">
+                            <div style="font-size: 32px; font-weight: 800; color: #f7931e; margin-bottom: 5px;">50K+</div>
+                            <div style="font-size: 14px; color: #666; font-weight: 600;">Clienti Attivi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="trust-indicators" style="margin-top: 80px; padding-top: 60px; border-top: 2px solid #e0e0e0;" data-aos="fade-up">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h3 style="font-size: 28px; font-weight: 700; color: #2c3e50; margin-bottom: 10px;">Perché le Aziende ci Scelgono</h3>
+                    <p style="color: #666;">I numeri parlano chiaro</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🎯</div>
+                        <div style="font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 5px;">Visibilità Garantita</div>
+                        <div style="font-size: 14px; color: #666;">50.000 ricerche al mese</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">⚡</div>
+                        <div style="font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 5px;">Setup Veloce</div>
+                        <div style="font-size: 14px; color: #666;">Attivo in 48 ore</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">💰</div>
+                        <div style="font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 5px;">ROI Positivo</div>
+                        <div style="font-size: 14px; color: #666;">+145% crescita media</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 48px; margin-bottom: 10px;">🛡️</div>
+                        <div style="font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 5px;">Supporto H24</div>
+                        <div style="font-size: 14px; color: #666;">Team sempre disponibile</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluzioni Section -->
+    <section class="soluzioni" id="servizi">
+        <div class="container">
+            <!-- Micro Header Animato -->
+            <div class="section-intro" data-aos="fade-down" data-aos-duration="800">
+                <span class="intro-sparkle">🚀</span>
+                <p class="intro-text">Soluzioni complete per far decollare la tua attività nel digitale</p>
+            </div>
+            
+            <!-- Barra Ricerca AI -->
+            <div class="ai-search-container" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
+                <div class="ai-search-wrapper">
+                    <div class="ai-badge">
+                        <i class="fas fa-brain"></i>
+                        <span>AI</span>
+                    </div>
+                    <input 
+                        type="text" 
+                        class="ai-search-input" 
+                        id="aiSearchInput"
+                        placeholder="Cerca con l'intelligenza artificiale... es: 'Ristorante ad Alghero', 'Artigiano ceramica'"
+                    >
+                    <button class="ai-search-btn" id="aiSearchBtn">
+                        <i class="fas fa-search"></i>
+                        <span>Cerca</span>
+                    </button>
+                </div>
+                <div class="ai-suggestions" id="aiSuggestions">
+                    <span class="suggestion-label">Suggerimenti:</span>
+                    <button class="suggestion-tag" data-query="Ristoranti Cagliari">
+                        <i class="fas fa-utensils"></i> Ristoranti Cagliari
+                    </button>
+                    <button class="suggestion-tag" data-query="Hotel Costa Smeralda">
+                        <i class="fas fa-hotel"></i> Hotel Costa Smeralda
+                    </button>
+                    <button class="suggestion-tag" data-query="Artigiani locali">
+                        <i class="fas fa-hammer"></i> Artigiani locali
+                    </button>
+                    <button class="suggestion-tag" data-query="Centri benessere">
+                        <i class="fas fa-spa"></i> Centri benessere
+                    </button>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <span class="section-badge" data-aos="fade-up" data-aos-delay="100">Soluzioni Complete</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">Soluzioni Digitali per Ogni Impresa Sarda</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="300">Dalla ristorazione all'artigianato — Omnicore ti aiuta a digitalizzare, gestire e far crescere la tua attività in modo intelligente.</p>
+            </div>
+            
+            <!-- Griglia Masonry Interattiva -->
+            <div class="solutions-masonry">
+                <!-- Card Ristoranti -->
+                <div class="solution-card large" data-aos="fade-up" data-aos-delay="100">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800" 
+                             alt="Ristoranti" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Ristoranti & Bar</h3>
+                                <p>Menu digitale, prenotazioni online e delivery integrato</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Hotel -->
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" 
+                             alt="Hotel" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Hotel & B&B</h3>
+                                <p>Sistema prenotazioni e pagamenti sicuri</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Artigianato -->
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600" 
+                             alt="Artigianato" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Artigiani Sardi</h3>
+                                <p>Vetrina prodotti e e-commerce integrato</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Negozi -->
+                <div class="solution-card tall" data-aos="fade-up" data-aos-delay="200">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600" 
+                             alt="Negozi" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Negozi & Commercio</h3>
+                                <p>Vendi online e in negozio con un solo sistema</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Professionisti -->
+                <div class="solution-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600" 
+                             alt="Professionisti" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Professionisti</h3>
+                                <p>Agenda online e gestione clienti avanzata</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Benessere -->
+                <div class="solution-card wide" data-aos="fade-up" data-aos-delay="400">
+                    <div class="solution-image">
+                        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800" 
+                             alt="Centri Benessere" 
+                             loading="lazy">
+                        <div class="solution-overlay">
+                            <div class="solution-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="solution-content">
+                                <h3>Centri Benessere</h3>
+                                <p>Prenotazioni trattamenti 24/7 e gestione abbonamenti</p>
+                                <a href="#aziende" class="solution-cta">
+                                    <span>Scopri la Soluzione</span>
+                                    <i class="fas fa-arrow-right solution-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">💬 Storie di Successo</span>
+                <h2 class="section-title">Cosa Dicono i Nostri Partner</h2>
+                <p class="section-subtitle">Risultati reali da aziende sarde che hanno scelto Omnicore</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Da quando siamo su Omnicore, abbiamo triplicato le prenotazioni online. La piattaforma è intuitiva e il supporto eccezionale. Il nostro ristorante è sempre pieno!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="Francesco Stellato">
+                        <div>
+                            <h4>Francesco Stellato</h4>
+                            <p>Proprietario, Ristorante Mabrouk, Alghero</p>
+                            <span style="color: #4caf50; font-weight: 600;">📈 +320% Prenotazioni Online</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Grazie a Omnicore ho digitalizzato completamente il mio laboratorio artigiano. Ora vendo i miei prodotti in tutta Italia con il sistema e-commerce integrato. Fatturato raddoppiato!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Giovanni Serra">
+                        <div>
+                            <h4>Giovanni Serra</h4>
+                            <p>Artigiano, Ceramiche Tradizionali Sarde</p>
+                            <span style="color: #4caf50; font-weight: 600;">📈 +200% Fatturato Annuo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Il supporto clienti è eccezionale e la mappa interattiva ci porta nuovi clienti ogni giorno. Le prenotazioni sono aumentate del 180% in soli 6 mesi. Consigliatissimo!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=45" alt="Laura Melis">
+                        <div>
+                            <h4>Laura Melis</h4>
+                            <p>Manager, Hotel Vista Mare, Villasimius</p>
+                            <span style="color: #4caf50; font-weight: 600;">📈 +180% Prenotazioni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aziende in Evidenza Section -->
+    <section id="aziende" class="aziende-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge" data-aos="fade-up" data-aos-delay="100">🎯 I Nostri Successi</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">Top Performers del Mese</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="300">Le aziende partner che hanno ottenuto i risultati migliori questo mese grazie a Omnicore</p>
+            </div>
+            
+            <!-- Top 3 Performers con Crescita -->
+            <div class="top-performers-container" style="max-width: 1200px; margin: 0 auto 60px;">
+                <div class="top-performers-slider" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                    <!-- Performer #1 -->
+                    <div class="performer-card" data-aos="fade-up" data-aos-delay="100" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative;">
+                        <div class="performance-badge" style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 14px; z-index: 10; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+                            <i class="fas fa-arrow-up"></i> +320%
+                        </div>
+                        <div style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=400&fit=crop" alt="Ristorante Su Cumbidu" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="padding: 30px;">
+                            <div style="background: #fff3e0; color: #f57c00; padding: 6px 14px; border-radius: 20px; display: inline-block; font-size: 12px; font-weight: 600; margin-bottom: 15px;">
+                                <i class="fas fa-utensils"></i> RISTORAZIONE
+                            </div>
+                            <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Ristorante Su Cumbidu</h3>
+                            <p style="color: #7f8c8d; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-map-marker-alt" style="color: #ff6b35;"></i> Cagliari
+                            </p>
+                            <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">Cucina tradizionale sarda nel cuore di Cagliari. Piatti autentici e ingredienti locali</p>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 2px solid #f0f0f0;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <i class="fas fa-star" style="color: #ffa726;"></i>
+                                    <span style="font-weight: 600; color: #2c3e50;">4.8</span>
+                                </div>
+                                <div style="color: #7f8c8d; font-size: 14px;">
+                                    <i class="fas fa-eye"></i> 532+ visite
+                                </div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(69, 160, 73, 0.1) 100%); border-radius: 10px; border-left: 4px solid #4caf50;">
+                                <div style="font-size: 13px; color: #2c3e50; font-weight: 600; margin-bottom: 5px;">
+                                    <i class="fas fa-chart-line" style="color: #4caf50;"></i> Performance Ottobre 2025
+                                </div>
+                                <div style="font-size: 12px; color: #666;">
+                                    Prenotazioni online: <strong style="color: #4caf50;">+320%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performer #2 -->
+                    <div class="performer-card" data-aos="fade-up" data-aos-delay="200" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative;">
+                        <div class="performance-badge" style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 14px; z-index: 10; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+                            <i class="fas fa-arrow-up"></i> +280%
+                        </div>
+                        <div style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=400&fit=crop" alt="Hotel Costa Smeralda" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="padding: 30px;">
+                            <div style="background: #e3f2fd; color: #1976d2; padding: 6px 14px; border-radius: 20px; display: inline-block; font-size: 12px; font-weight: 600; margin-bottom: 15px;">
+                                <i class="fas fa-hotel"></i> TURISMO
+                            </div>
+                            <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Hotel Costa Smeralda</h3>
+                            <p style="color: #7f8c8d; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-map-marker-alt" style="color: #ff6b35;"></i> Olbia
+                            </p>
+                            <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">Hotel di lusso con vista mare mozzafiato. Suite esclusive e servizi premium</p>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 2px solid #f0f0f0;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <i class="fas fa-star" style="color: #ffa726;"></i>
+                                    <span style="font-weight: 600; color: #2c3e50;">4.9</span>
+                                </div>
+                                <div style="color: #7f8c8d; font-size: 14px;">
+                                    <i class="fas fa-eye"></i> 845+ visite
+                                </div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(69, 160, 73, 0.1) 100%); border-radius: 10px; border-left: 4px solid #4caf50;">
+                                <div style="font-size: 13px; color: #2c3e50; font-weight: 600; margin-bottom: 5px;">
+                                    <i class="fas fa-chart-line" style="color: #4caf50;"></i> Performance Ottobre 2025
+                                </div>
+                                <div style="font-size: 12px; color: #666;">
+                                    Prenotazioni camere: <strong style="color: #4caf50;">+280%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performer #3 -->
+                    <div class="performer-card" data-aos="fade-up" data-aos-delay="300" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); position: relative;">
+                        <div class="performance-badge" style="position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 14px; z-index: 10; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+                            <i class="fas fa-arrow-up"></i> +245%
+                        </div>
+                        <div style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop" alt="Ceramiche Artistiche Sarde" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div style="padding: 30px;">
+                            <div style="background: #f3e5f5; color: #7b1fa2; padding: 6px 14px; border-radius: 20px; display: inline-block; font-size: 12px; font-weight: 600; margin-bottom: 15px;">
+                                <i class="fas fa-hammer"></i> ARTIGIANATO
+                            </div>
+                            <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Ceramiche Artistiche Sarde</h3>
+                            <p style="color: #7f8c8d; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                                <i class="fas fa-map-marker-alt" style="color: #ff6b35;"></i> Assemini
+                            </p>
+                            <p style="color: #555; line-height: 1.6; margin-bottom: 20px;">Prodotti artigianali tradizionali fatti a mano. Ceramica, tessuti e gioielli sardi</p>
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 2px solid #f0f0f0;">
+                                <div style="display: flex; align-items: center; gap: 5px;">
+                                    <i class="fas fa-star" style="color: #ffa726;"></i>
+                                    <span style="font-weight: 600; color: #2c3e50;">4.7</span>
+                                </div>
+                                <div style="color: #7f8c8d; font-size: 14px;">
+                                    <i class="fas fa-eye"></i> 623+ visite
+                                </div>
+                            </div>
+                            <div style="margin-top: 15px; padding: 15px; background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(69, 160, 73, 0.1) 100%); border-radius: 10px; border-left: 4px solid #4caf50;">
+                                <div style="font-size: 13px; color: #2c3e50; font-weight: 600; margin-bottom: 5px;">
+                                    <i class="fas fa-chart-line" style="color: #4caf50;"></i> Performance Ottobre 2025
+                                </div>
+                                <div style="font-size: 12px; color: #666;">
+                                    Vendite e-commerce: <strong style="color: #4caf50;">+245%</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA per vedere tutte le aziende -->
+            <div class="view-all-cta" data-aos="fade-up" data-aos-delay="300">
+                <p class="cta-text">Vuoi ottenere risultati come questi?</p>
+                <a href="aziende.html" class="btn btn-primary btn-large">
+                    <span>Diventa Partner Omnicore</span>
+                    <i class="fas fa-rocket"></i>
+                </a>
+                <p class="cta-subtext">Inizia gratis per 30 giorni - Nessuna carta richiesta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mappa Section - Dove Ci Trovi -->
+    <section id="mappa" class="mappa-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">📍 La Nostra Presenza</span>
+                <h2 class="section-title">Dove Ci Trovi</h2>
+                <p class="section-subtitle">La rete Omnicore copre tutta la Sardegna con migliaia di aziende partner</p>
+            </div>
+            
+            <!-- Stats delle città coperte -->
+            <div class="coverage-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px;">
+                <div class="coverage-card" data-aos="fade-up" style="background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 42px; font-weight: 800; color: #ff6b35; margin-bottom: 5px;">450+</div>
+                    <div style="font-size: 14px; color: #666; font-weight: 600;">Aziende a Cagliari</div>
+                </div>
+                <div class="coverage-card" data-aos="fade-up" data-aos-delay="100" style="background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 42px; font-weight: 800; color: #ff6b35; margin-bottom: 5px;">320+</div>
+                    <div style="font-size: 14px; color: #666; font-weight: 600;">Aziende a Sassari</div>
+                </div>
+                <div class="coverage-card" data-aos="fade-up" data-aos-delay="200" style="background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 42px; font-weight: 800; color: #ff6b35; margin-bottom: 5px;">280+</div>
+                    <div style="font-size: 14px; color: #666; font-weight: 600;">Aziende a Olbia</div>
+                </div>
+                <div class="coverage-card" data-aos="fade-up" data-aos-delay="300" style="background: white; padding: 25px; border-radius: 15px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 42px; font-weight: 800; color: #ff6b35; margin-bottom: 5px;">450+</div>
+                    <div style="font-size: 14px; color: #666; font-weight: 600;">Altre Province</div>
+                </div>
+            </div>
+            
+            <div class="map-controls">
+                <button class="map-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Tutte le Aziende Partner
+                </button>
+                <button class="map-btn" data-filter="ristorazione">
+                    <i class="fas fa-utensils"></i> Ristorazione
+                </button>
+                <button class="map-btn" data-filter="turismo">
+                    <i class="fas fa-hotel"></i> Turismo
+                </button>
+                <button class="map-btn" data-filter="artigianato">
+                    <i class="fas fa-hammer"></i> Artigianato
+                </button>
+                <button class="map-btn" data-filter="servizi">
+                    <i class="fas fa-briefcase"></i> Servizi
+                </button>
+            </div>
+            <div id="map"></div>
+            
+            <!-- Info aggiuntiva sotto la mappa -->
+            <div style="text-align: center; margin-top: 30px; padding: 30px; background: linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(247, 147, 30, 0.1) 100%); border-radius: 15px;" data-aos="fade-up">
+                <h3 style="font-size: 24px; font-weight: 700; margin-bottom: 10px; color: #2c3e50;">
+                    <i class="fas fa-map-marked-alt" style="color: #ff6b35;"></i> La Tua Zona Non È Coperta?
+                </h3>
+                <p style="color: #666; margin-bottom: 20px;">Stiamo espandendo costantemente la nostra rete in tutta la Sardegna</p>
+                <button class="btn btn-primary" onclick="document.getElementById('registerBtn').click()">
+                    <span>Porta Omnicore nella Tua Città</span>
+                    <i class="fas fa-rocket"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About CEO Section -->
+    <section class="about-ceo">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 60px;">
+                <span class="section-badge">💡 Perché Sceglierci</span>
+                <h2 class="section-title">I Vantaggi di Essere Partner Omnicore</h2>
+                <p class="section-subtitle">Tutto ciò che ti serve per dominare il mercato digitale sardo</p>
+            </div>
+            
+            <div class="benefits-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 80px;">
+                <div class="benefit-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;" data-aos="fade-up">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-chart-line" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Visibilità Garantita</h3>
+                    <p style="color: #7f8c8d; line-height: 1.6;">Appari nelle prime posizioni di ricerca. Oltre 50.000 utenti vedranno la tua azienda ogni mese.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;" data-aos="fade-up" data-aos-delay="100">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-mobile-alt" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">App Dedicata</h3>
+                    <p style="color: #7f8c8d; line-height: 1.6;">Gestisci tutto da smartphone: prenotazioni, ordini, pagamenti e statistiche in tempo reale.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;" data-aos="fade-up" data-aos-delay="200">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-credit-card" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Pagamenti Integrati</h3>
+                    <p style="color: #7f8c8d; line-height: 1.6;">Sistema di pagamento sicuro e veloce. Ricevi i soldi direttamente sul tuo conto in 24h.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;" data-aos="fade-up" data-aos-delay="300">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-brain" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">AI & Analytics</h3>
+                    <p style="color: #7f8c8d; line-height: 1.6;">Intelligenza artificiale per analizzare i dati e suggerire strategie per aumentare le vendite.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;" data-aos="fade-up" data-aos-delay="400">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-headset" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Supporto H24</h3>
+                    <p style="color: #7f8c8d; line-height: 1.6;">Team dedicato sempre disponibile via chat, email e telefono per risolvere ogni problema.</p>
+                </div>
+                
+                <div class="benefit-card" style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: all 0.3s ease;" data-aos="fade-up" data-aos-delay="500">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                        <i class="fas fa-rocket" style="font-size: 28px; color: white;"></i>
+                    </div>
+                    <h3 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #2c3e50;">Setup Rapido</h3>
+                    <p style="color: #7f8c8d; line-height: 1.6;">Attivazione in 48h. Ti aiutiamo a configurare tutto e ti formiamo gratuitamente.</p>
+                </div>
+            </div>
+            
+            <div class="ceo-container">
+                <div class="ceo-image-wrapper" data-aos="fade-right">
+                    <div class="ceo-image">
+                        <img src="media/images/team/ceo.png" alt="CEO Omnicore Service" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800'">
+                    </div>
+                    <div class="ceo-badge">
+                        <span>CEO & Founder</span>
+                    </div>
+                </div>
+                <div class="ceo-content" data-aos="fade-left">
+                    <h3>La Nostra Missione</h3>
+                    <h2>Digitalizzare la Sardegna, Un'Azienda alla Volta</h2>
+                    <p>Sono nato e cresciuto in Sardegna, e ho sempre avuto la passione per l'innovazione tecnologica e l'imprenditoria. Nel 2019, ho fondato Omnicore Service con una missione chiara: <strong>dare ad ogni azienda sarda gli strumenti per competere nel digitale e crescere.</strong></p>
+                    <p>Ho visto troppe attività eccellenti restare nell'ombra per mancanza di visibilità online. Ho visto artigiani straordinari perdere opportunità perché non avevano un e-commerce. Ho visto ristoratori lavorare 16 ore al giorno senza riuscire a gestire le prenotazioni digitalmente.</p>
+                    <p><strong>Per questo è nato Omnicore:</strong> una piattaforma completa, facile da usare, pensata per chi vuole crescere senza complicazioni tecniche. Oggi siamo la realtà leader del digitale sardo, e il nostro obiettivo è rendere ogni azienda partner un successo misurabile.</p>
+                    
+                    <div class="ceo-stats">
+                        <div class="ceo-stat">
+                            <h4>2019</h4>
+                            <p>Anno di Fondazione</p>
+                        </div>
+                        <div class="ceo-stat">
+                            <h4>1.500+</h4>
+                            <p>Aziende di Successo</p>
+                        </div>
+                        <div class="ceo-stat">
+                            <h4>€25M+</h4>
+                            <p>Fatturato Generato</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ceo-social">
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto a Far Decollare la Tua Azienda?</h2>
+                <p>Unisciti a oltre 1.500 aziende sarde che hanno triplicato il loro fatturato con Omnicore Service. Il tuo successo è la nostra priorità.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="document.getElementById('registerBtn').click()">
+                        <span>Inizia Gratis per 30 Giorni</span>
+                        <i class="fas fa-rocket"></i>
+                    </button>
+                    <button class="btn btn-outline" onclick="window.location.href='#contatti'">
+                        <span>Parla con un Consulente</span>
+                        <i class="fas fa-phone"></i>
+                    </button>
+                </div>
+                <div class="cta-features">
+                    <span><i class="fas fa-check"></i> Prova gratuita 30 giorni</span>
+                    <span><i class="fas fa-check"></i> Nessuna carta richiesta</span>
+                    <span><i class="fas fa-check"></i> Supporto dedicato gratuito</span>
+                    <span><i class="fas fa-check"></i> Garanzia soddisfatti o rimborsati</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contatti">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Omnicore Service</h3>
+                    <p>La piattaforma leader per le aziende sarde. Connettiti con migliaia di clienti e fai crescere il tuo business.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Link Utili</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#aziende">Aziende</a></li>
+                        <li><a href="#mappa">Mappa</a></li>
+                        <li><a href="#servizi">Servizi</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Termini e Condizioni</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@omnicoreservice.it</li>
+                        <li><i class="fas fa-phone"></i> +39 070 123456</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Via Roma 123, Cagliari</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 9:00-18:00</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Seguici</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Omnicore Service. Tutti i diritti riservati. Made with ❤️ in Sardegna</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bentornato!</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="mario.rossi@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Accedi</span>
+                    <i class="fas fa-sign-in-alt"></i>
+                </button>
+                <p class="form-footer">Non hai un account? <a href="#" id="switchToRegister">Registrati ora</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Registrazione -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Crea il Tuo Account</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Nome Completo</label>
+                    <input type="text" id="registerName" placeholder="Mario Rossi" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="mario.rossi@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Minimo 6 caratteri" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Conferma Password</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Ripeti la password" required>
+                </div>
+                <div class="form-group">
+                    <label for="userType">Tipo di Utente</label>
+                    <select id="userType" required>
+                        <option value="">Seleziona...</option>
+                        <option value="cliente">Cliente</option>
+                        <option value="azienda">Proprietario Azienda</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span>Registrati</span>
+                    <i class="fas fa-user-plus"></i>
+                </button>
+                <p class="form-footer">Hai già un account? <a href="#" id="switchToLogin">Accedi</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Attrazione Sardegna -->
+    <div id="attractionModal" class="modal">
+        <div class="modal-content attraction-modal-content">
+            <span class="close">&times;</span>
+            <div class="attraction-modal-body">
+                <div class="attraction-modal-image">
+                    <img id="attractionModalImage" src="" alt="">
+                </div>
+                <div class="attraction-modal-info">
+                    <div class="attraction-badge" id="attractionModalBadge">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="attractionModalLocation"></span>
+                    </div>
+                    <h2 id="attractionModalTitle"></h2>
+                    <p id="attractionModalDescription" class="attraction-description"></p>
+                    <div class="attraction-details" id="attractionModalInfo"></div>
+                    <div class="attraction-modal-actions">
+                        <button class="btn btn-primary" onclick="window.open('https://www.google.com/maps/search/' + encodeURIComponent(document.getElementById('attractionModalTitle').textContent + ' Sardegna'), '_blank')">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Vedi su Maps</span>
+                        </button>
+                        <button class="btn btn-outline" onclick="document.getElementById('attractionModal').style.display='none'">
+                            <span>Chiudi</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Inizializza AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
