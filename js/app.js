@@ -1,0 +1,1180 @@
+// ====================================
+//  OMNICORE SERVICE - PROFESSIONAL JS
+//  Advanced Features & Interactivity
+// ====================================
+
+// ========== AI SEARCH FUNCTIONALITY ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const aiSearchInput = document.getElementById('aiSearchInput');
+    const aiSearchBtn = document.getElementById('aiSearchBtn');
+    const suggestionTags = document.querySelectorAll('.suggestion-tag');
+    
+    // Funzione ricerca AI
+    function performAISearch(query) {
+        if (!query || query.trim() === '') return;
+        
+        // Animazione ricerca
+        aiSearchBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Ricerca...</span>';
+        aiSearchBtn.style.pointerEvents = 'none';
+        
+        // Simula ricerca AI (in produzione connetterà a backend/API)
+        setTimeout(() => {
+            // Filtra aziende in base alla query
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) {
+                searchInput.value = query;
+                searchInput.dispatchEvent(new Event('input'));
+            }
+            
+            // Scroll alla sezione aziende
+            const aziendeSection = document.getElementById('aziende');
+            if (aziendeSection) {
+                aziendeSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // Reset pulsante
+            setTimeout(() => {
+                aiSearchBtn.innerHTML = '<i class="fas fa-check"></i><span>Trovato!</span>';
+                setTimeout(() => {
+                    aiSearchBtn.innerHTML = '<i class="fas fa-search"></i><span>Cerca</span>';
+                    aiSearchBtn.style.pointerEvents = 'auto';
+                }, 1500);
+            }, 500);
+            
+            // Notifica successo
+            showNotification(`Ricerca completata per: "${query}"`, 'success');
+        }, 800);
+    }
+    
+    // Click sul pulsante cerca
+    if (aiSearchBtn) {
+        aiSearchBtn.addEventListener('click', function() {
+            const query = aiSearchInput.value;
+            performAISearch(query);
+        });
+    }
+    
+    // Enter key nell'input
+    if (aiSearchInput) {
+        aiSearchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const query = aiSearchInput.value;
+                performAISearch(query);
+            }
+        });
+        
+        // Effetto typing
+        aiSearchInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                this.parentElement.classList.add('typing');
+            } else {
+                this.parentElement.classList.remove('typing');
+            }
+        });
+    }
+    
+    // Click sui suggerimenti
+    suggestionTags.forEach(tag => {
+        tag.addEventListener('click', function() {
+            const query = this.getAttribute('data-query');
+            aiSearchInput.value = query;
+            
+            // Animazione tag
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+                performAISearch(query);
+            }, 150);
+        });
+    });
+});
+
+// Database simulato (in produzione sarà collegato a un backend)
+let aziende = [
+    {
+        id: 1,
+        nome: "Ristorante Su Cumbidu",
+        categoria: "ristorazione",
+        location: "cagliari",
+        lat: 39.2238,
+        lng: 9.1217,
+        descrizione: "Cucina tradizionale sarda nel cuore di Cagliari. Piatti autentici e ingredienti locali",
+        rating: 4.8,
+        immagine: "media/images/businesses/azienda-1.jpg",
+        telefono: "+39 070 123456",
+        email: "info@sucumbidu.it",
+        sito: "www.sucumbidu.it"
+    },
+    {
+        id: 2,
+        nome: "Hotel Costa Smeralda",
+        categoria: "turismo",
+        location: "olbia",
+        lat: 40.9237,
+        lng: 9.4967,
+        descrizione: "Hotel di lusso con vista mare mozzafiato. Suite esclusive e servizi premium",
+        rating: 4.9,
+        immagine: "media/images/businesses/azienda-2.jpg",
+        telefono: "+39 0789 234567",
+        email: "booking@hotelcostasmeralda.it",
+        sito: "www.hotelcostasmeralda.it"
+    },
+    {
+        id: 3,
+        nome: "Artigianato Sardo Premium",
+        categoria: "artigianato",
+        location: "nuoro",
+        lat: 40.3205,
+        lng: 9.3107,
+        descrizione: "Prodotti artigianali tradizionali della Sardegna. Ceramiche, tessuti e gioielli",
+        rating: 4.7,
+        immagine: "media/images/businesses/azienda-3.jpg",
+        telefono: "+39 0784 345678",
+        email: "info@artigianatosardo.it",
+        sito: "www.artigianatosardo.it"
+    },
+    {
+        id: 4,
+        nome: "Caffè Tostato Sassarese",
+        categoria: "commercio",
+        location: "sassari",
+        lat: 40.7259,
+        lng: 8.5594,
+        descrizione: "Torrefazione artigianale dal 1950. Miscele esclusive e caffè specialty",
+        rating: 4.6,
+        immagine: "media/images/businesses/azienda-4.jpg",
+        telefono: "+39 079 456789",
+        email: "info@caffesassarese.it",
+        sito: "www.caffesassarese.it"
+    },
+    {
+        id: 5,
+        nome: "Studio Legale Carboni & Partners",
+        categoria: "servizi",
+        location: "cagliari",
+        lat: 39.2176,
+        lng: 9.1129,
+        descrizione: "Consulenza legale specializzata in diritto commerciale e amministrativo",
+        rating: 4.5,
+        immagine: "media/images/businesses/azienda-5.jpg",
+        telefono: "+39 070 567890",
+        email: "studio@legalecarboni.it",
+        sito: "www.legalecarboni.it"
+    },
+    {
+        id: 6,
+        nome: "Agriturismo Monte Lerno",
+        categoria: "turismo",
+        location: "oristano",
+        lat: 39.9042,
+        lng: 8.5915,
+        descrizione: "Agriturismo immerso nella natura sarda. Cucina biologica e camere accoglienti",
+        rating: 4.8,
+        immagine: "media/images/businesses/azienda-6.jpg",
+        telefono: "+39 0783 678901",
+        email: "info@montelerno.it",
+        sito: "www.montelerno.it"
+    },
+    {
+        id: 7,
+        nome: "Pizzeria La Vela",
+        categoria: "ristorazione",
+        location: "sassari",
+        lat: 40.7301,
+        lng: 8.5534,
+        descrizione: "Pizzeria napoletana con forno a legna. Impasto fatto in casa e ingredienti DOP",
+        rating: 4.7,
+        immagine: "media/images/businesses/azienda-7.jpg",
+        telefono: "+39 079 789012",
+        email: "info@pizzerialavela.it",
+        sito: "www.pizzerialavela.it"
+    },
+    {
+        id: 8,
+        nome: "Boutique Moda Sarda",
+        categoria: "commercio",
+        location: "olbia",
+        lat: 40.9215,
+        lng: 9.5033,
+        descrizione: "Moda e accessori Made in Sardegna. Design contemporaneo e tradizione",
+        rating: 4.6,
+        immagine: "media/images/businesses/azienda-8.jpg",
+        telefono: "+39 0789 890123",
+        email: "info@modasarda.it",
+        sito: "www.modasarda.it"
+    }
+];
+
+let users = [];
+let currentUser = null;
+let map = null;
+let markers = [];
+
+// ========== Inizializzazione App ==========
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Omnicore Service inizializzato');
+    initializeApp();
+    setupEventListeners();
+    
+    // Carica le aziende in evidenza per la homepage
+    loadFeaturedAziende();
+    
+    // Carica tutte le aziende solo se siamo nella pagina dedicata
+    if (document.getElementById('aziendeGrid')) {
+        loadAziende();
+    }
+    
+    initializeMap();
+    animateStats();
+});
+
+function initializeApp() {
+    // Carica utenti dal localStorage
+    const savedUsers = localStorage.getItem('omnicore_users');
+    if (savedUsers) {
+        users = JSON.parse(savedUsers);
+    }
+
+    // Carica utente corrente
+    const savedCurrentUser = localStorage.getItem('omnicore_currentUser');
+    if (savedCurrentUser) {
+        currentUser = JSON.parse(savedCurrentUser);
+        updateUIForLoggedInUser();
+    }
+    
+    console.log(`📊 ${users.length} utenti registrati`);
+    console.log(`🏢 ${aziende.length} aziende caricate`);
+}
+
+// ========== Event Listeners ==========
+function setupEventListeners() {
+    // Modal controls
+    const loginModal = document.getElementById('loginModal');
+    const registerModal = document.getElementById('registerModal');
+    const loginBtn = document.getElementById('loginBtn');
+    const registerBtn = document.getElementById('registerBtn');
+    const closeBtns = document.querySelectorAll('.close');
+
+    loginBtn?.addEventListener('click', () => openModal(loginModal));
+    registerBtn?.addEventListener('click', () => openModal(registerModal));
+
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            closeModal(this.closest('.modal'));
+        });
+    });
+
+    // Close modal on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            closeModal(e.target);
+        }
+    });
+
+    // Switch modals
+    document.getElementById('switchToRegister')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal(loginModal);
+        openModal(registerModal);
+    });
+
+    document.getElementById('switchToLogin')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeModal(registerModal);
+        openModal(loginModal);
+    });
+
+    // Form submissions
+    document.getElementById('loginForm')?.addEventListener('submit', handleLogin);
+    document.getElementById('registerForm')?.addEventListener('submit', handleRegister);
+
+    // Search & Filters
+    document.getElementById('searchInput')?.addEventListener('input', debounce(filterAziende, 300));
+    document.getElementById('categoryFilter')?.addEventListener('change', filterAziende);
+    document.getElementById('locationFilter')?.addEventListener('change', filterAziende);
+
+    // Map filter buttons
+    document.querySelectorAll('.map-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.map-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            filterMapMarkers(this.dataset.filter);
+        });
+    });
+
+    // Hamburger menu
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    hamburger?.addEventListener('click', () => {
+        navMenu?.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+
+    // Smooth scroll for all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                navMenu?.classList.remove('active');
+            }
+        });
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        // ESC to close modals
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal').forEach(modal => closeModal(modal));
+        }
+    });
+}
+
+// ========== Modal Functions ==========
+function openModal(modal) {
+    if (modal) {
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal(modal) {
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// ========== Authentication ==========
+function handleLogin(e) {
+    e.preventDefault();
+    
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+
+    if (!email || !password) {
+        showNotification('Compila tutti i campi', 'error');
+        return;
+    }
+
+    const user = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
+
+    if (user) {
+        currentUser = { ...user };
+        delete currentUser.password;
+        localStorage.setItem('omnicore_currentUser', JSON.stringify(currentUser));
+        
+        showNotification(`Benvenuto, ${currentUser.name}! 🎉`, 'success');
+        closeModal(document.getElementById('loginModal'));
+        updateUIForLoggedInUser();
+        
+        document.getElementById('loginForm').reset();
+    } else {
+        showNotification('Email o password non corretti ❌', 'error');
+    }
+}
+
+function handleRegister(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('registerName').value.trim();
+    const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+    const userType = document.getElementById('userType').value;
+
+    // Validazioni
+    if (!name || !email || !password || !confirmPassword || !userType) {
+        showNotification('Compila tutti i campi', 'error');
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        showNotification('Le password non coincidono', 'error');
+        return;
+    }
+
+    if (password.length < 6) {
+        showNotification('La password deve essere di almeno 6 caratteri', 'error');
+        return;
+    }
+
+    if (!isValidEmail(email)) {
+        showNotification('Inserisci un\'email valida', 'error');
+        return;
+    }
+
+    if (users.find(u => u.email.toLowerCase() === email)) {
+        showNotification('Email già registrata', 'error');
+        return;
+    }
+
+    // Crea nuovo utente
+    const newUser = {
+        id: Date.now(),
+        name,
+        email,
+        password,
+        userType,
+        registrationDate: new Date().toISOString(),
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=0066FF&color=fff`
+    };
+
+    users.push(newUser);
+    localStorage.setItem('omnicore_users', JSON.stringify(users));
+
+    showNotification(`Registrazione completata! Benvenuto ${name} 🎉`, 'success');
+    closeModal(document.getElementById('registerModal'));
+    
+    document.getElementById('registerForm').reset();
+
+    // Auto-login
+    currentUser = { ...newUser };
+    delete currentUser.password;
+    localStorage.setItem('omnicore_currentUser', JSON.stringify(currentUser));
+    updateUIForLoggedInUser();
+}
+
+function updateUIForLoggedInUser() {
+    if (currentUser) {
+        const authButtons = document.querySelector('.auth-buttons');
+        if (authButtons) {
+            authButtons.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <img src="${currentUser.avatar}" alt="${currentUser.name}" style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--primary);">
+                    <span style="color: var(--dark); font-weight: 600; font-size: 14px;">Ciao, ${currentUser.name.split(' ')[0]}!</span>
+                    <button class="btn btn-login" onclick="handleLogout()" title="Esci">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            `;
+        }
+    }
+}
+
+function handleLogout() {
+    if (confirm('Sei sicuro di voler uscire?')) {
+        currentUser = null;
+        localStorage.removeItem('omnicore_currentUser');
+        showNotification('Logout effettuato. A presto! 👋', 'success');
+        setTimeout(() => location.reload(), 1000);
+    }
+}
+
+// ========== Utility Functions ==========
+function isValidEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    
+    const icon = type === 'success' ? '✓' : '✕';
+    notification.innerHTML = `
+        <span style="font-size: 20px; font-weight: bold;">${icon}</span>
+        <span>${message}</span>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.style.animation = 'slideInRight 0.4s ease-out reverse';
+        setTimeout(() => notification.remove(), 400);
+    }, 3500);
+}
+
+// ========== Aziende Functions ==========
+// Carica solo le 6 aziende TOP del mese per la homepage
+function loadFeaturedAziende() {
+    const grid = document.getElementById('featuredAziendeGrid');
+    if (!grid) return;
+    
+    grid.innerHTML = '';
+    
+    // Prendi solo le prime 6 aziende con rating più alto (TOP del mese)
+    const topAziende = [...aziende]
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 6);
+
+    if (topAziende.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: rgba(15, 15, 15, 0.6); padding: 60px 20px;">Nessuna azienda in evidenza questo mese</p>';
+        return;
+    }
+
+    topAziende.forEach((azienda, index) => {
+        const card = createAziendaCard(azienda, true);
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', (index % 3) * 100);
+        grid.appendChild(card);
+    });
+}
+
+// Funzione per caricare TUTTE le aziende (per la pagina dedicata aziende.html)
+function loadAziende() {
+    const grid = document.getElementById('aziendeGrid');
+    if (!grid) return;
+    
+    grid.innerHTML = '';
+
+    if (aziende.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: rgba(15, 15, 15, 0.6); padding: 60px 20px;">Nessuna azienda trovata</p>';
+        return;
+    }
+
+    aziende.forEach((azienda, index) => {
+        const card = createAziendaCard(azienda, false);
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', (index % 3) * 100);
+        grid.appendChild(card);
+    });
+}
+
+function createAziendaCard(azienda, isFeatured = false) {
+    const card = document.createElement('div');
+    card.className = 'azienda-card';
+    
+    // Badge "Top del Mese" per le aziende in evidenza
+    const topBadge = isFeatured ? '<span class="top-badge"><i class="fas fa-star"></i> Top del Mese</span>' : '';
+    
+    card.innerHTML = `
+        ${topBadge}
+        <img src="${azienda.immagine}" alt="${azienda.nome}" class="azienda-image" loading="lazy">
+        <div class="azienda-content">
+            <span class="azienda-category">${getCategoryName(azienda.categoria)}</span>
+            <h3>${azienda.nome}</h3>
+            <div class="azienda-location">
+                <i class="fas fa-map-marker-alt"></i>
+                ${getLocationName(azienda.location)}
+            </div>
+            <p>${azienda.descrizione}</p>
+            <div class="azienda-rating">
+                <i class="fas fa-star"></i>
+                <span>${azienda.rating}</span>
+                <span style="color: rgba(15, 15, 15, 0.5); margin-left: auto; font-size: 14px;">
+                    <i class="fas fa-eye"></i> ${Math.floor(Math.random() * 500 + 100)} visite
+                </span>
+            </div>
+        </div>
+    `;
+    
+    card.addEventListener('click', () => showAziendaDetails(azienda));
+    return card;
+}
+
+function getCategoryName(category) {
+    const categories = {
+        'ristorazione': 'Ristorazione',
+        'turismo': 'Turismo',
+        'artigianato': 'Artigianato',
+        'servizi': 'Servizi',
+        'commercio': 'Commercio'
+    };
+    return categories[category] || category;
+}
+
+function getLocationName(location) {
+    const locations = {
+        'cagliari': 'Cagliari',
+        'sassari': 'Sassari',
+        'olbia': 'Olbia',
+        'nuoro': 'Nuoro',
+        'oristano': 'Oristano'
+    };
+    return locations[location] || location;
+}
+
+function filterAziende() {
+    const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+    const category = document.getElementById('categoryFilter')?.value || '';
+    const location = document.getElementById('locationFilter')?.value || '';
+
+    const filtered = aziende.filter(azienda => {
+        const matchesSearch = azienda.nome.toLowerCase().includes(searchTerm) ||
+                            azienda.descrizione.toLowerCase().includes(searchTerm);
+        const matchesCategory = !category || azienda.categoria === category;
+        const matchesLocation = !location || azienda.location === location;
+
+        return matchesSearch && matchesCategory && matchesLocation;
+    });
+
+    const grid = document.getElementById('aziendeGrid');
+    if (!grid) return;
+    
+    grid.innerHTML = '';
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--gray); padding: 60px 20px; font-size: 18px;">😔 Nessuna azienda trovata con questi filtri</p>';
+        return;
+    }
+
+    filtered.forEach(azienda => {
+        const card = createAziendaCard(azienda);
+        grid.appendChild(card);
+    });
+}
+
+function showAziendaDetails(azienda) {
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content" style="max-width: 700px;">
+            <span class="close" onclick="this.closest('.modal').remove()">&times;</span>
+            <img src="${azienda.immagine}" alt="${azienda.nome}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 24px;">
+            <span class="azienda-category">${getCategoryName(azienda.categoria)}</span>
+            <h2 style="margin: 16px 0; font-family: var(--font-display);">${azienda.nome}</h2>
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap;">
+                <div class="azienda-rating" style="font-size: 18px;">
+                    <i class="fas fa-star"></i>
+                    <span>${azienda.rating}</span>
+                </div>
+                <div class="azienda-location" style="font-size: 16px;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    ${getLocationName(azienda.location)}
+                </div>
+            </div>
+            <p style="color: var(--gray); line-height: 1.8; margin-bottom: 24px; font-size: 16px;">${azienda.descrizione}</p>
+            <div style="background: var(--lighter); padding: 24px; border-radius: 12px; margin-bottom: 24px;">
+                <h3 style="margin-bottom: 16px; font-size: 18px;">📞 Contatti</h3>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div><i class="fas fa-phone" style="color: var(--primary); width: 24px;"></i> ${azienda.telefono}</div>
+                    <div><i class="fas fa-envelope" style="color: var(--primary); width: 24px;"></i> ${azienda.email}</div>
+                    <div><i class="fas fa-globe" style="color: var(--primary); width: 24px;"></i> ${azienda.sito}</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="window.open('https://www.google.com/maps?q=${azienda.lat},${azienda.lng}', '_blank')">
+                    <i class="fas fa-directions"></i>
+                    <span>Come Arrivare</span>
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='tel:${azienda.telefono}'">
+                    <i class="fas fa-phone"></i>
+                    <span>Chiama Ora</span>
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.href='mailto:${azienda.email}'">
+                    <i class="fas fa-envelope"></i>
+                    <span>Invia Email</span>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+// ========== Map Functions ==========
+function initializeMap() {
+    const mapElement = document.getElementById('map');
+    if (!mapElement) return;
+
+    // Centro della Sardegna
+    const sardegnaCenter = [40.1209, 9.0129];
+    
+    map = L.map('map').setView(sardegnaCenter, 8);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
+    }).addTo(map);
+
+    // Aggiungi tutti i markers
+    addAllMarkers();
+}
+
+function addAllMarkers() {
+    aziende.forEach(azienda => {
+        const marker = L.marker([azienda.lat, azienda.lng]);
+        
+        marker.bindPopup(`
+            <div style="text-align: center; min-width: 250px;">
+                <img src="${azienda.immagine}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 12px;">
+                <h3 style="margin-bottom: 8px; font-size: 18px; color: var(--dark);">${azienda.nome}</h3>
+                <p style="margin: 8px 0; color: var(--gray); font-size: 14px;">
+                    <span class="azienda-category" style="font-size: 11px;">${getCategoryName(azienda.categoria)}</span>
+                </p>
+                <p style="margin: 8px 0; color: var(--gray);">${azienda.descrizione.substring(0, 80)}...</p>
+                <div style="color: var(--accent); margin: 12px 0; font-weight: 600;">
+                    <i class="fas fa-star"></i> ${azienda.rating}
+                </div>
+                <button onclick="showAziendaDetails(aziende.find(a => a.id === ${azienda.id}))" 
+                        style="background: var(--gradient-primary); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%;">
+                    Vedi Dettagli
+                </button>
+            </div>
+        `, {
+            maxWidth: 300
+        });
+
+        // Icona personalizzata
+        const icon = L.divIcon({
+            html: `<div style="background: var(--primary); color: white; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,102,255,0.4); border: 3px solid white;">
+                <i class="fas fa-${getCategoryIcon(azienda.categoria)}" style="font-size: 16px;"></i>
+            </div>`,
+            className: '',
+            iconSize: [36, 36],
+            iconAnchor: [18, 18]
+        });
+        
+        marker.setIcon(icon);
+        marker.addTo(map);
+        
+        marker.categoria = azienda.categoria;
+        markers.push(marker);
+    });
+}
+
+function filterMapMarkers(category) {
+    markers.forEach(marker => {
+        if (category === 'all' || marker.categoria === category) {
+            marker.addTo(map);
+        } else {
+            map.removeLayer(marker);
+        }
+    });
+}
+
+function getCategoryIcon(category) {
+    const icons = {
+        'ristorazione': 'utensils',
+        'turismo': 'hotel',
+        'artigianato': 'hammer',
+        'servizi': 'briefcase',
+        'commercio': 'shopping-cart'
+    };
+    return icons[category] || 'building';
+}
+
+// ========== Stats Animation ==========
+function animateStats() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumbers = entry.target.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.dataset.target);
+                    animateValue(stat, 0, target, 2000);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.stats-banner');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
+}
+
+function animateValue(element, start, end, duration) {
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(progress * (end - start) + start);
+        element.textContent = formatNumber(current);
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+function formatNumber(num) {
+    if (num >= 1000000) {
+        return (num / 1000000).toFixed(1) + 'M';
+    } else if (num >= 1000) {
+        return (num / 1000).toFixed(1) + 'K';
+    }
+    return num.toString();
+}
+
+// ========== Performance & SEO ==========
+// Lazy loading per immagini
+if ('loading' in HTMLImageElement.prototype) {
+    const images = document.querySelectorAll('img[loading="lazy"]');
+    images.forEach(img => {
+        img.src = img.dataset.src || img.src;
+    });
+} else {
+    // Fallback per browser che non supportano lazy loading nativo
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+    document.body.appendChild(script);
+}
+
+console.log('✅ Omnicore Service caricato con successo');
+
+// ========== GALLERY ATTRACTION MODAL ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const attractionModal = document.getElementById('attractionModal');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    // Aggiungi evento click a ogni gallery item
+    galleryItems.forEach(item => {
+        const infoBtn = item.querySelector('.gallery-info-btn');
+        if (infoBtn) {
+            infoBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openAttractionModal(item);
+            });
+        }
+        
+        // Click anche sull'immagine
+        item.addEventListener('click', function() {
+            openAttractionModal(item);
+        });
+    });
+    
+    // Funzione per aprire il modal
+    function openAttractionModal(item) {
+        const title = item.getAttribute('data-title');
+        const location = item.getAttribute('data-location');
+        const description = item.getAttribute('data-description');
+        const info = item.getAttribute('data-info');
+        const imageSrc = item.querySelector('img').src;
+        
+        // Popola il modal con i dati
+        document.getElementById('attractionModalTitle').textContent = title;
+        document.getElementById('attractionModalLocation').textContent = location;
+        document.getElementById('attractionModalDescription').textContent = description;
+        document.getElementById('attractionModalInfo').innerHTML = info;
+        document.getElementById('attractionModalImage').src = imageSrc;
+        document.getElementById('attractionModalImage').alt = title;
+        
+        // Mostra il modal
+        attractionModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Animazione di entrata
+        setTimeout(() => {
+            attractionModal.querySelector('.modal-content').style.transform = 'scale(1)';
+            attractionModal.querySelector('.modal-content').style.opacity = '1';
+        }, 10);
+    }
+    
+    // Chiudi il modal
+    const closeBtn = attractionModal.querySelector('.close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            closeAttractionModal();
+        });
+    }
+    
+    // Chiudi cliccando fuori dal modal
+    attractionModal.addEventListener('click', function(e) {
+        if (e.target === attractionModal) {
+            closeAttractionModal();
+        }
+    });
+    
+    // Funzione per chiudere il modal
+    function closeAttractionModal() {
+        attractionModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+    
+    // Chiudi con tasto ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && attractionModal.style.display === 'flex') {
+            closeAttractionModal();
+        }
+    });
+});
+
+console.log(' Gallery Attraction Modal inizializzato');
+
+// ========== INFINITE SWIPE CAROUSEL ==========
+document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('galleryCarousel');
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
+    
+    if (!carousel || !track) return;
+    
+    const items = Array.from(track.querySelectorAll('.gallery-carousel-item'));
+    const totalItems = items.length;
+    let currentIndex = 0;
+    let isAnimating = false;
+    
+    // Variabili per lo swipe touch
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    let startTransform = 0;
+    let hasMoved = false;
+    
+    // Calcola quanti item mostrare per volta
+    function getItemsPerView() {
+        const width = window.innerWidth;
+        if (width > 1024) return 3;
+        if (width > 768) return 2;
+        return 1;
+    }
+    
+    // Aggiorna la classe "center" per la card centrale
+    function updateCenterClass() {
+        items.forEach((item, index) => {
+            item.classList.remove('center');
+            if (index === currentIndex) {
+                item.classList.add('center');
+            }
+        });
+    }
+    
+    // Crea indicators
+    function createIndicators() {
+        indicatorsContainer.innerHTML = '';
+        
+        for (let i = 0; i < totalItems; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-indicator');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            indicatorsContainer.appendChild(dot);
+        }
+    }
+    
+    // Aggiorna indicators
+    function updateIndicators() {
+        const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+        
+        indicators.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+    
+    // Calcola la posizione del carousel
+    function updateCarousel(smooth = true) {
+        const itemsPerView = getItemsPerView();
+        const itemWidth = 100 / itemsPerView;
+        const translateX = -(currentIndex * itemWidth);
+        
+        track.style.transition = smooth ? 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)' : 'none';
+        track.style.transform = 'translateX(' + translateX + '%)';
+        
+        updateCenterClass();
+        updateIndicators();
+    }
+    
+    // Vai alla slide specifica
+    function goToSlide(index, smooth = true) {
+        if (isAnimating) return;
+        
+        // Loop infinito
+        if (index < 0) {
+            currentIndex = totalItems - 1;
+        } else if (index >= totalItems) {
+            currentIndex = 0;
+        } else {
+            currentIndex = index;
+        }
+        
+        isAnimating = true;
+        updateCarousel(smooth);
+        
+        setTimeout(() => {
+            isAnimating = false;
+        }, 500);
+    }
+    
+    // Prossima slide
+    function nextSlide() {
+        goToSlide(currentIndex + 1);
+    }
+    
+    // Slide precedente
+    function prevSlide() {
+        goToSlide(currentIndex - 1);
+    }
+    
+    // Event listeners per i pulsanti
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    
+    // Touch/Mouse events per lo swipe
+    function handleStart(e) {
+        isDragging = true;
+        hasMoved = false;
+        startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        const transform = track.style.transform;
+        const match = transform.match(/-?[\d.]+/);
+        startTransform = match ? parseFloat(match) : 0;
+        track.style.transition = 'none';
+        carousel.style.cursor = 'grabbing';
+    }
+    
+    function handleMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        hasMoved = true;
+        
+        currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+        const diff = currentX - startX;
+        const percentage = (diff / carousel.offsetWidth) * 100;
+        
+        track.style.transform = 'translateX(' + (startTransform + percentage) + '%)';
+    }
+    
+    function handleEnd(e) {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+        
+        const diff = currentX - startX;
+        const threshold = 50; // pixel di soglia per considerare uno swipe
+        
+        if (Math.abs(diff) > threshold && hasMoved) {
+            if (diff > 0) {
+                prevSlide();
+            } else {
+                nextSlide();
+            }
+        } else {
+            updateCarousel(true);
+        }
+    }
+    
+    // Mouse events
+    carousel.addEventListener('mousedown', handleStart);
+    carousel.addEventListener('mousemove', handleMove);
+    carousel.addEventListener('mouseup', handleEnd);
+    carousel.addEventListener('mouseleave', handleEnd);
+    
+    // Touch events
+    carousel.addEventListener('touchstart', handleStart, { passive: false });
+    carousel.addEventListener('touchmove', handleMove, { passive: false });
+    carousel.addEventListener('touchend', handleEnd);
+    
+    // Gestione del modal per le card del carousel
+    items.forEach(item => {
+        const infoBtn = item.querySelector('.gallery-info-btn');
+        if (infoBtn) {
+            infoBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (!hasMoved) {
+                    openCarouselModal(item);
+                }
+            });
+        }
+        
+        item.addEventListener('click', function(e) {
+            if (!hasMoved && !isDragging) {
+                openCarouselModal(item);
+            }
+        });
+    });
+    
+    // Funzione per aprire il modal dal carousel
+    function openCarouselModal(item) {
+        const attractionModal = document.getElementById('attractionModal');
+        if (!attractionModal) return;
+        
+        const title = item.getAttribute('data-title');
+        const location = item.getAttribute('data-location');
+        const description = item.getAttribute('data-description');
+        const info = item.getAttribute('data-info');
+        const imageSrc = item.querySelector('img').src;
+        
+        // Popola il modal con i dati
+        document.getElementById('attractionModalTitle').textContent = title;
+        document.getElementById('attractionModalLocation').textContent = location;
+        document.getElementById('attractionModalDescription').textContent = description;
+        document.getElementById('attractionModalInfo').innerHTML = info;
+        document.getElementById('attractionModalImage').src = imageSrc;
+        document.getElementById('attractionModalImage').alt = title;
+        
+        // Mostra il modal
+        attractionModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Animazione di entrata
+        setTimeout(() => {
+            const modalContent = attractionModal.querySelector('.modal-content');
+            if (modalContent) {
+                modalContent.style.transform = 'scale(1)';
+                modalContent.style.opacity = '1';
+            }
+        }, 10);
+    }
+    
+    // Resize handler
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            createIndicators();
+            updateCarousel(false);
+        }, 250);
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') prevSlide();
+        if (e.key === 'ArrowRight') nextSlide();
+    });
+    
+    // Inizializza
+    createIndicators();
+    updateCarousel(false);
+    
+    console.log('✅ Infinite Swipe Carousel inizializzato con ' + totalItems + ' items');
+});
+
+// ========== CATEGORIES TOGGLE (VISUALIZZA ALTRO) ==========
+function toggleCategories() {
+    const wrapper = document.querySelector('.categories-wrapper');
+    const btn = document.querySelector('.view-more-btn');
+    const btnText = btn.querySelector('.view-more-text');
+    const btnIcon = btn.querySelector('i');
+    
+    if (wrapper.classList.contains('collapsed')) {
+        wrapper.classList.remove('collapsed');
+        wrapper.classList.add('expanded');
+        btnText.textContent = 'Mostra Meno';
+        btnIcon.style.transform = 'rotate(180deg)';
+    } else {
+        wrapper.classList.add('collapsed');
+        wrapper.classList.remove('expanded');
+        btnText.textContent = 'Visualizza Altro';
+        btnIcon.style.transform = 'rotate(0deg)';
+        
+        // Scroll smooth alla sezione categorie quando si chiude
+        document.getElementById('categorie').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+console.log('✅ Categories Toggle inizializzato');
+
